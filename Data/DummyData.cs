@@ -9,59 +9,81 @@ using System.Threading.Tasks;
 // Adapted from https://github.com/medhatelmasry/HealthAPI/blob/master/HealthAPI/Data/DummyData.cs
 namespace ERPProject.Data
 {
+    /*
     public class DummyData
     {
-        /*
         public static void Initialize(IApplicationBuilder app)
         {
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
-                var context = serviceScope.ServiceProvider.GetService<AttendeeContext>();
+                var context = serviceScope.ServiceProvider.GetService<ERPContext>();
                 context.Database.EnsureCreated();
 
                 // Look for any events
-                if (context.Events != null && context.Events.Any())
+                if (context.Products != null && context.Products.Any())
                     return;
 
-                var events = GetEvents().ToArray();
-                context.Events.AddRange(events);
+                var products = GetProducts().ToArray();
+                context.Products.AddRange(products);
                 context.SaveChanges();
 
-                var users = GetUsers().ToArray();
-                context.Users.AddRange(users);
+                var employees = GetEmployees().ToArray();
+                context.Users.AddRange(employees);
                 context.SaveChanges();
 
-                var attendees = GetAttendees().ToArray();
-                context.Attendees.AddRange(attendees);
+                var customers = GetCustomers().ToArray();
+                context.Customers.AddRange(customers);
+                context.SaveChanges();
+
+                var orders = GetOrders().ToArray();
+                context.Orders.AddRange(orders);
                 context.SaveChanges();
             }
         }
 
-        public static List<Event> GetEvents()
+        public static List<Product> GetProducts()
         {
-            List<Event> events = new List<Event>() {
-                new Event {
-                    Name="Student welcome",
-                    Description = "like each Monday, we welcome new students at IT Academy.",
-                    Date = new DateTime(2020, 7, 20, 9, 0, 0),
-                    Online = true,
-                    Type = "Special Event"
+            List<Product> products = new List<Product>() {
+                new Product {
+                    Name="Earbuds 100X",
+                    Category="Electronics",
+                    Description = "The best earbuds in the market!",
+                    CurrentPrice = 17.99,
+                    Stock = 4500,
+                    Purchases = 102
                 },
-                new Event {
-                    Name="MySQL Masterclass",
-                    Description = "A masterclass on MySQL by the Common Block itinerary instructor.",
-                    Date = new DateTime(2020, 7, 23, 11, 30, 0),
-                    Online = false, Capacity = 25,
-                    Type = "Masterclass"
+                new Product {
+                    Name="Blue shirt",
+                    Category="Men's Shirts",
+                    Description = "A top-quality cotton shirt, in blue",
+                    CurrentPrice = 20.49,
+                    Stock = 1200,
+                    Purchases = 323
                 },
-                new Event {
-                    Name="August holidays",
-                    Description = "IT Academy closes until August 31st. In the attached file you can find the calendar for Septembler. Happy holidays!",
-                    Date = new DateTime(2020, 7, 30, 13, 0, 0), File = "calendar-september.xlsx",
-                    Online = false,
-                    Type = "Holidays" }
+                new Product {
+                    Name="The Handmaid's Tale",
+                    Category="Books",
+                    Description = @"#1 New York Times bestseller. Look for The Testaments, the 
+                                  sequel to The Handmaid’s Tale, available now. An instant classic 
+                                  and eerily prescient cultural phenomenon, from “the patron saint 
+                                  of feminist dystopian fiction” (New York Times).Now an 
+                                  award-winning Hulu series starring Elizabeth Moss. In Margaret 
+                                  Atwood’s dystopian future, environmental disasters and declining 
+                                  birthrates have led to a Second American Civil War.The result is 
+                                  the rise of the Republic of Gilead, a totalitarian regime that 
+                                  enforces rigid social roles and enslaves the few remaining fertile 
+                                  women. Offred is one of these, a Handmaid bound to produce children 
+                                  for one of Gilead’s commanders.Deprived of her husband, her child, 
+                                  her freedom, and even her own name, Offred clings to her memories 
+                                  and her will to survive.At once a scathing satire, an ominous 
+                                  warning, and a tour de force of narrative suspense, The Handmaid’s 
+                                  Tale is a modern classic. Includes an introduction by Margaret 
+                                  Atwood. Paperback – March 16, 1998",
+                    CurrentPrice = 7.99,
+                    Stock = 3004,
+                    Purchases = 2809 }
             };
-            return events;
+            return products;
         }
 
         public static List<User> GetUsers()
@@ -112,6 +134,6 @@ namespace ERPProject.Data
             };
             return attendees;
         }
-        */
     }
+    */
 }
