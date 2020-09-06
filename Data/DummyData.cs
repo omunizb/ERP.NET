@@ -13,31 +13,29 @@ namespace ERPProject.Data
     {
         public static void Initialize(IApplicationBuilder app)
         {
-            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
-            {
-                var context = serviceScope.ServiceProvider.GetService<ERPContext>();
-                context.Database.EnsureCreated();
+            using var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope();
+            var context = serviceScope.ServiceProvider.GetService<ERPContext>();
+            context.Database.EnsureCreated();
 
-                // Look for any events
-                if (context.Products != null && context.Products.Any())
-                    return;
+            // Look for any events
+            if (context.Products != null && context.Products.Any())
+                return;
 
-                var products = GetProducts().ToArray();
-                context.Products.AddRange(products);
-                context.SaveChanges();
+            var products = GetProducts().ToArray();
+            context.Products.AddRange(products);
+            context.SaveChanges();
 
-                var employees = GetEmployees().ToArray();
-                context.Employees.AddRange(employees);
-                context.SaveChanges();
+            var employees = GetEmployees().ToArray();
+            context.Employees.AddRange(employees);
+            context.SaveChanges();
 
-                var customers = GetCustomers().ToArray();
-                context.Customers.AddRange(customers);
-                context.SaveChanges();
+            var customers = GetCustomers().ToArray();
+            context.Customers.AddRange(customers);
+            context.SaveChanges();
 
-                var orders = GetOrders().ToArray();
-                context.Orders.AddRange(orders);
-                context.SaveChanges();
-            }
+            var orders = GetOrders().ToArray();
+            context.Orders.AddRange(orders);
+            context.SaveChanges();
         }
 
         public static List<Product> GetProducts()
