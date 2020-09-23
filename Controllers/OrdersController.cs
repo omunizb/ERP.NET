@@ -7,11 +7,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ERPProject.Data;
 using ERPProject.Models;
+using Microsoft.AspNetCore.Cors;
 
 namespace ERPProject.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("ERPPolicy")]
     public class OrdersController : ControllerBase
     {
         private readonly ERPContext _context;
