@@ -1,0 +1,9 @@
+a {
+    color: #fff;
+}
+a:visited {
+    color: #fff;
+}
+a:hover, a:active, a:focus {
+    color:#fff;
+}
