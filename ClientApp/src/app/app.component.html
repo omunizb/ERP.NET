@@ -5,14 +5,18 @@
   </button>
   <div class="collapse navbar-collapse" id="navbar">
     <ul class="navbar-nav mr-auto mt-2">
-      <li class="nav-item"><a class="nav-link">Stock</a></li>
-      <li class="nav-item"><a class="nav-link">Customers</a></li>
-      <li class="nav-item"><a class="nav-link">Employees</a></li>
-      <li class="nav-item"><a class="nav-link">Orders</a></li>
-      <li class="nav-item"><a class="nav-link">Stats</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/stock">Stock</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/customers">Customers</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/employees">Employees</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/orders">Orders</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/stats">Stats</a></li>
     </ul>
     <ul class="navbar-nav ml-auto mt-2">
       <li class="nav-item"><a class="nav-link">Log Out</a></li>
     </ul>
   </div>
 </nav>
+<router-outlet></router-outlet>
+<footer class="small text-center text-muted">
+  Designed by Oriol Muniz - 2020
+</footer>

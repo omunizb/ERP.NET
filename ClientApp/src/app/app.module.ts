@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { CostumersComponent } from './costumers/costumers.component';
 import { OrdersComponent } from './orders/orders.component';
 import { StatsComponent } from './stats/stats.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { StatsComponent } from './stats/stats.component';
     StatsComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
