@@ -1,0 +1,11 @@
+table {
+    width: 100%;
+}
+
+.mat-cell, .mat-header-cell {
+    padding: 15px;
+}
+
+.mat-column-description {
+    text-align: justify;
+}
