@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.SpaServices.AngularCli;
 
 namespace ERPProject
 {
@@ -38,6 +39,14 @@ namespace ERPProject
                        .AllowAnyMethod()
                        .AllowAnyHeader();
             }));
+
+            services.AddControllersWithViews();
+
+            // In production, the Angular files will be served from this directory
+            services.AddSpaStaticFiles(configuration =>
+            {
+                configuration.RootPath = "ClientApp/dist";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,6 +59,12 @@ namespace ERPProject
 
             app.UseHttpsRedirection();
 
+            app.UseStaticFiles();
+            if (!env.IsDevelopment())
+            {
+                app.UseSpaStaticFiles();
+            }
+
             app.UseRouting();
 
             app.UseCors("ERPPolicy");
@@ -61,7 +76,20 @@ namespace ERPProject
                 endpoints.MapControllers();
             });
 
-            // DummyData.Initialize(app);
+            app.UseSpa(spa =>
+            {
+                // To learn more about options for serving an Angular SPA from ASP.NET Core,
+                // see https://go.microsoft.com/fwlink/?linkid=864501
+
+                spa.Options.SourcePath = "ClientApp";
+
+                if (env.IsDevelopment())
+                {
+                    spa.UseAngularCliServer(npmScript: "start");
+                }
+            });
+
+            DummyData.Initialize(app);
         }
     }
 }
