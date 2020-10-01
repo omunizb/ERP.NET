@@ -9,3 +9,7 @@ table {
 .mat-column-description {
     text-align: justify;
 }
+
+input {
+    margin: 15px 15px 15px 15px;
+}
