@@ -15,7 +15,7 @@ namespace ERPProject.Models
         public string Email { get; set; }
         public DateTime FirstPurchase { get; set; }
         public DateTime LatestPurchase { get; set; }
-        public float TotalExpenditure { get; set; }
+        public double TotalExpenditure { get; set; }
         public int TotalPurchases { get; set; }
         public string DeliveryAddress { get; set; }
         public string BillingAddress { get; set; }

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ERPProject.Data.Migrations
 {
     [DbContext(typeof(ERPContext))]
-    [Migration("20201001181944_InitialCreate")]
+    [Migration("20201002040239_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -52,8 +52,8 @@ namespace ERPProject.Data.Migrations
                     b.Property<string>("Surname")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<float>("TotalExpenditure")
-                        .HasColumnType("real");
+                    b.Property<double>("TotalExpenditure")
+                        .HasColumnType("float");
 
                     b.Property<int>("TotalPurchases")
                         .HasColumnType("int");
@@ -82,8 +82,8 @@ namespace ERPProject.Data.Migrations
                     b.Property<string>("Position")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<float>("Salary")
-                        .HasColumnType("real");
+                    b.Property<double>("Salary")
+                        .HasColumnType("float");
 
                     b.Property<string>("Surname")
                         .HasColumnType("nvarchar(max)");
@@ -118,11 +118,11 @@ namespace ERPProject.Data.Migrations
                     b.Property<long>("IdProduct")
                         .HasColumnType("bigint");
 
-                    b.Property<float>("Price")
-                        .HasColumnType("real");
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
 
-                    b.Property<float>("PriceVAT")
-                        .HasColumnType("real");
+                    b.Property<double>("PriceVAT")
+                        .HasColumnType("float");
 
                     b.Property<int>("Priority")
                         .HasColumnType("int");
@@ -151,8 +151,8 @@ namespace ERPProject.Data.Migrations
                     b.Property<string>("Category")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<float>("CurrentPrice")
-                        .HasColumnType("real");
+                    b.Property<double>("CurrentPrice")
+                        .HasColumnType("float");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");

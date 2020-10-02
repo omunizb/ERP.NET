@@ -23,8 +23,8 @@ namespace ERPProject.Models
         public DateTime Time { get; set; }
         public bool Devolution { get; set; }
         public int Quantity { get; set; }
-        public float Price { get; set; }
-        public float PriceVAT { get; set; }
+        public double Price { get; set; }
+        public double PriceVAT { get; set; }
         public string State { get; set; }
         public int Priority { get; set; }
         public DateTime ExpectedDelivery { get; set; }

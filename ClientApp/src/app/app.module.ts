@@ -8,7 +8,10 @@ import { LoginComponent } from './login/login.component';
 import { CostumersComponent } from './costumers/costumers.component';
 import { OrdersComponent } from './orders/orders.component';
 import { StatsComponent } from './stats/stats.component';
+
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
@@ -29,6 +32,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MatTableModule,
     MatIconModule,

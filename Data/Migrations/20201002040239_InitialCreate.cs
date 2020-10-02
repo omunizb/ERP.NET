@@ -18,7 +18,7 @@ namespace ERPProject.Data.Migrations
                     Email = table.Column<string>(nullable: true),
                     FirstPurchase = table.Column<DateTime>(nullable: false),
                     LatestPurchase = table.Column<DateTime>(nullable: false),
-                    TotalExpenditure = table.Column<float>(nullable: false),
+                    TotalExpenditure = table.Column<double>(nullable: false),
                     TotalPurchases = table.Column<int>(nullable: false),
                     DeliveryAddress = table.Column<string>(nullable: true),
                     BillingAddress = table.Column<string>(nullable: true),
@@ -39,7 +39,7 @@ namespace ERPProject.Data.Migrations
                     Surname = table.Column<string>(nullable: true),
                     Hired = table.Column<DateTime>(nullable: false),
                     Departed = table.Column<DateTime>(nullable: false),
-                    Salary = table.Column<float>(nullable: false),
+                    Salary = table.Column<double>(nullable: false),
                     Position = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -59,8 +59,8 @@ namespace ERPProject.Data.Migrations
                     Time = table.Column<DateTime>(nullable: false),
                     Devolution = table.Column<bool>(nullable: false),
                     Quantity = table.Column<int>(nullable: false),
-                    Price = table.Column<float>(nullable: false),
-                    PriceVAT = table.Column<float>(nullable: false),
+                    Price = table.Column<double>(nullable: false),
+                    PriceVAT = table.Column<double>(nullable: false),
                     State = table.Column<string>(nullable: true),
                     Priority = table.Column<int>(nullable: false),
                     ExpectedDelivery = table.Column<DateTime>(nullable: false),
@@ -80,7 +80,7 @@ namespace ERPProject.Data.Migrations
                     Name = table.Column<string>(nullable: true),
                     Category = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
-                    CurrentPrice = table.Column<float>(nullable: false),
+                    CurrentPrice = table.Column<double>(nullable: false),
                     Stock = table.Column<int>(nullable: false),
                     Purchases = table.Column<int>(nullable: false)
                 },
