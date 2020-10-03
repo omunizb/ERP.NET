@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Product } from '../product';
 import { ProductService } from '../product.service';
 
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
@@ -16,25 +14,17 @@ import { MatPaginator } from '@angular/material/paginator';
 })
 export class StockComponent implements OnInit {
   title = 'Stock';
-  baseUrl = 'https://localhost:44362/api/products';
   tableDataSrc = new MatTableDataSource();
   tableCols: string[] = ['idProduct', 'name', 'category', 'description', 'currentPrice', 'stock', 'purchases', 'update', 'delete'];
-  
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
-  constructor(private productService: ProductService, private http: HttpClient) { }
+  constructor(private productService: ProductService) { }
 
   ngOnInit() {
-    // this.getStock();
-    this.http.get<Product[]>(this.baseUrl).subscribe(data => {  
-      this.tableDataSrc.data = data;
-      console.log(data);  
-    }, error => console.error(error));
+    this.getStock();
+    // }, error => console.error(error));
     this.tableDataSrc.sort = this.sort;
     this.tableDataSrc.paginator = this.paginator;
   }
@@ -54,15 +44,10 @@ export class StockComponent implements OnInit {
     return -1;
   }
 
-  delete(product: number) {
-    const id = product;
-    const url = `${this.baseUrl}/${id}`;
-    
+  delete(id: number): void {
     var index = this.findWithAttr(this.tableDataSrc.data, "id", id);
-
     this.tableDataSrc.data.splice(index, 1);
-
-    this.http.delete<Product>(url, this.httpOptions).subscribe();
+    this.productService.deleteProduct(id).subscribe();
   }
 
   onSearchInput(ev) {
