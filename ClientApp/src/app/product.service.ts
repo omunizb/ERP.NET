@@ -17,12 +17,16 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   getStock(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.stockUrl)
+    return this.http.get<Product[]>(this.stockUrl);
+  }
+
+  getProduct(id: number): Observable<Product> {
+    const url = `${this.stockUrl}/${id}`;
+    return this.http.get<Product>(url);
   }
 
   deleteProduct(id: number): Observable<Product> {
     const url = `${this.stockUrl}/${id}`;
-
     return this.http.delete<Product>(url, this.httpOptions);
   }
 }
