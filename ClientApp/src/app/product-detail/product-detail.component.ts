@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { FormBuilder } from '@angular/forms';
+import { Validators } from '@angular/forms';
+import { catchError, tap } from 'rxjs/operators';
 
 import { ProductService } from '../product.service';
 
@@ -23,25 +25,28 @@ export class ProductDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.productForm = this.formBuilder.group({
-      name: '',
-      category: '',
-      description: '',
-      currentPrice: '',
-      stock: '',
-      purchases: ''
+      idProduct: [{ value: '', disabled: true }],
+      name: ['', [Validators.required, Validators.maxLength(200)]],
+      category: ['', Validators.maxLength(100)],
+      description: ['', Validators.maxLength(2000)],
+      currentPrice: ['', Validators.required],
+      stock: [''],
+      purchases: [{ value: '', disabled: true }]
     });
+
     this.getProduct();
   }
 
   onSubmit(productData) {
-    this.productForm.reset();
-
-    console.warn('Your order has been submitted', productData);
+    console.log(productData);
+    this.productService.updateProduct(productData).subscribe();
+    this.goBack();
   }
 
   getProduct(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.productService.getProduct(id)
+      .pipe(tap(product => this.productForm.patchValue(product)))
       .subscribe(product => this.product = product);
   }
 

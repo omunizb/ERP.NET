@@ -5,9 +5,6 @@ form {
   
 table, .mat-form-field {
     width: 100%;
-}
-  
-td {
     padding-right: 8px;
 }
 
@@ -16,7 +13,8 @@ button {
 }
 
 .button-row {
-    margin-left: 250px;
+    margin-left: 240px;
     margin-bottom: 50px;
+    margin-top: 50px;
     width: 50%;
 }

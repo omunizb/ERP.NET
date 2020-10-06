@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { Product } from './product';
-import { STOCK } from './mock-stock'; 
 
 @Injectable({
   providedIn: 'root'
@@ -28,5 +27,10 @@ export class ProductService {
   deleteProduct(id: number): Observable<Product> {
     const url = `${this.stockUrl}/${id}`;
     return this.http.delete<Product>(url, this.httpOptions);
+  }
+
+  updateProduct(product: Product): Observable<any> {
+    const employeeUrl = `${this.stockUrl}/${product.idProduct}`;
+    return this.http.put(employeeUrl, product, this.httpOptions);
   }
 }
