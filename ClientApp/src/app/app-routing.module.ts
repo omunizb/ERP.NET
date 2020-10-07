@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: 'stock', component: StockComponent },
+  { path: 'product', component: ProductDetailComponent },
   { path: 'product/:id', component: ProductDetailComponent },
   { path: 'customers', component: CostumersComponent },
   { path: 'employees', component: EmployeesComponent },

@@ -10,6 +10,18 @@ table {
     text-align: justify;
 }
 
-input {
-    margin: 15px 15px 15px 15px;
+.mat-form-field {
+    padding-right: 30px;
+    margin-left: 8px;
+    margin-top: 15px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.mat-raised-button {
+    position: absolute;
+    right: 0px;
+    margin: 30px 25px 0px 0px;  
 }

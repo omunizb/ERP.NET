@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
-import { catchError, tap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 
 import { ProductService } from '../product.service';
 
@@ -13,14 +13,14 @@ import { ProductService } from '../product.service';
   styleUrls: ['./product-detail.component.css']
 })
 export class ProductDetailComponent implements OnInit {
-  product;
   productForm;
 
   constructor(
     private productService: ProductService,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -34,20 +34,29 @@ export class ProductDetailComponent implements OnInit {
       purchases: [{ value: '', disabled: true }]
     });
 
-    this.getProduct();
+    if (this.route.snapshot.paramMap.get('id')) {
+      this.getProduct();
+    }
   }
 
   onSubmit(productData) {
-    console.log(productData);
-    this.productService.updateProduct(productData).subscribe();
-    this.goBack();
+    if (this.route.snapshot.paramMap.get('id')) {
+      this.productService.updateProduct(productData).subscribe();
+      this.router.navigate(['/stock']);
+    }
+    else {
+      delete productData.idProduct;
+      productData.purchases = 0;
+      this.productService.addProduct(productData).subscribe();
+      this.router.navigate(['/stock']);
+    }
   }
 
   getProduct(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.productService.getProduct(id)
       .pipe(tap(product => this.productForm.patchValue(product)))
-      .subscribe(product => this.product = product);
+      .subscribe();
   }
 
   goBack(): void {

@@ -33,4 +33,8 @@ export class ProductService {
     const employeeUrl = `${this.stockUrl}/${product.idProduct}`;
     return this.http.put(employeeUrl, product, this.httpOptions);
   }
+
+  addProduct(product: Product): Observable<Product> {
+    return this.http.post<Product>(this.stockUrl, product, this.httpOptions);
+  }
 }

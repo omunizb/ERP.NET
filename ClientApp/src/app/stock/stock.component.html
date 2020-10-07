@@ -1,4 +1,13 @@
-<input matInput (keyup)="onSearchInput($event)" placeholder="Search product">
+<div>
+    <mat-form-field appearance="fill">
+        <mat-label>Search product</mat-label>
+        <input matInput (keyup)="onSearchInput($event)">
+        <mat-icon matPrefix>search</mat-icon>
+    </mat-form-field>
+
+    <a mat-raised-button color="primary" routerLink="/product">Add product</a>
+
+</div>
 
 <table mat-table [dataSource]="tableDataSrc" matSort class="mat-elevation-z8">
     <ng-container *ngFor="let col of tableCols">
@@ -6,13 +15,17 @@
             <div *ngIf="col=='update'">
                 <th mat-header-cell *matHeaderCellDef></th>
                 <td mat-cell *matCellDef="let profile">
-                    <a mat-mini-fab color="primary" routerLink="/product/{{profile['idProduct']}}"><mat-icon>create</mat-icon></a>
+                    <a mat-mini-fab color="primary" routerLink="/product/{{profile['idProduct']}}">
+                        <mat-icon>create</mat-icon>
+                    </a>
                 </td>
             </div>
             <div *ngIf="col=='delete'">
                 <th mat-header-cell *matHeaderCellDef></th>
                 <td mat-cell *matCellDef="let profile">
-                    <button mat-mini-fab color="primary" (click)="delete(profile['idProduct'])"><mat-icon>delete_forever</mat-icon></button>
+                    <button mat-mini-fab color="primary" (click)="delete(profile['idProduct'])">
+                        <mat-icon>delete_forever</mat-icon>
+                    </button>
                 </td>
             </div>
             <div *ngIf="col=='currentPrice'; else elseBlock">
