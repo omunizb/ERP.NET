@@ -42,14 +42,14 @@ export class ProductDetailComponent implements OnInit {
   onSubmit(productData) {
     if (this.route.snapshot.paramMap.get('id')) {
       this.productService.updateProduct(productData).subscribe();
-      this.router.navigate(['/stock']);
     }
     else {
       delete productData.idProduct;
       productData.purchases = 0;
       this.productService.addProduct(productData).subscribe();
-      this.router.navigate(['/stock']);
     }
+    this.productService.getStock().subscribe();
+    this.router.navigate(['/stock']);
   }
 
   getProduct(): void {

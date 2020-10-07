@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { Product } from './product';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  private stockUrl = 'https://localhost:44362/api/products';
+  private stockUrl = 'api/products';
+  private stockDataSource = new BehaviorSubject<any>('');
+  stockData$ = this.stockDataSource.asObservable();
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -16,7 +18,8 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   getStock(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.stockUrl);
+    this.stockData$ = this.http.get<Product[]>(this.stockUrl);
+    return this.stockData$;
   }
 
   getProduct(id: number): Observable<Product> {

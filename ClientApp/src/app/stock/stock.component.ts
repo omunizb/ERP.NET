@@ -34,20 +34,9 @@ export class StockComponent implements OnInit {
         .subscribe(stock => this.tableDataSrc.data = stock);
   }
 
-  // https://stackoverflow.com/a/7178381
-  findWithAttr(array, attr, value) {
-    for(var i = 0; i < array.length; i += 1) {
-        if(array[i][attr] === value) {
-            return i;
-        }
-    }
-    return -1;
-  }
-
   delete(id: number): void {
-    var index = this.findWithAttr(this.tableDataSrc.data, "id", id);
-    this.tableDataSrc.data.splice(index, 1);
     this.productService.deleteProduct(id).subscribe();
+    this.getStock();
   }
 
   onSearchInput(ev) {
