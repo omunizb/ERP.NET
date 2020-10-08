@@ -1,0 +1,21 @@
+form {
+    margin: auto;
+    width: 50%;
+    margin-top: 15px;
+}
+  
+table, .mat-form-field {
+    width: 100%;
+    padding-right: 8px;
+}
+
+button {
+    margin-right: 15px;
+}
+
+.button-row {
+    margin-left: 240px;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    width: 50%;
+}

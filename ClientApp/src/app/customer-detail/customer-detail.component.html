@@ -1,0 +1,67 @@
+<form [formGroup]="customerForm" (ngSubmit)="onSubmit(customerForm.getRawValue())">
+
+    <table cellspacing="0"><tr>
+        <td style="width:6em"><mat-form-field appearance="standard" style="width:6em">
+            <mat-label>ID</mat-label>
+            <input matInput formControlName="idCustomer" type="number">
+        </mat-form-field></td>
+        <td><mat-form-field appearance="standard">
+            <mat-label>Name</mat-label>
+                <input matInput formControlName="name" maxlength="35" required>
+        </mat-form-field></td>
+        <td><mat-form-field appearance="standard">
+            <mat-label>Surname</mat-label>
+                <input matInput formControlName="surname" maxlength="35" required>
+        </mat-form-field></td>
+    </tr></table>
+
+    <table cellspacing="0"><tr>
+        <td><mat-form-field appearance="standard">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" maxlength="320" required>
+        </mat-form-field></td>
+        <td><mat-form-field appearance="standard">
+            <mat-label>Bank account</mat-label>
+            <input matInput formControlName="bankAccount" maxlength="50" required>
+        </mat-form-field></td>
+    </tr></table>
+
+    <table cellspacing="0"><tr>
+        <td><mat-form-field appearance="standard">
+            <mat-label>Delivery address</mat-label>
+            <input matInput formControlName="deliveryAddress" maxlength="320" required>
+        </mat-form-field></td>
+        <td><mat-form-field appearance="standard">
+            <mat-label>Billing address</mat-label>
+            <input matInput formControlName="billingAddress" maxlength="320" required>
+        </mat-form-field></td>
+    </tr></table>
+
+    <table cellspacing="0"><tr>
+        <td><mat-form-field appearance="standard">
+            <mat-label>First purchase</mat-label>
+            <input matInput formControlName="firstPurchase" type="datetime-local">
+        </mat-form-field></td>
+        <td><mat-form-field appearance="standard">
+            <mat-label>Latest Purchase</mat-label>
+            <input matInput formControlName="latestPurchase" type="datetime-local">
+        </mat-form-field></td>
+    </tr></table>
+
+    <table cellspacing="0"><tr>
+        <td><mat-form-field appearance="standard">
+            <mat-label>Total expenditure</mat-label>
+            <input matInput formControlName="totalExpenditure" type="number" step="0.01">
+        </mat-form-field></td>
+        <td><mat-form-field appearance="standard">
+            <mat-label>Total Purchases</mat-label>
+            <input matInput formControlName="totalPurchases" type="number">
+        </mat-form-field></td>
+    </tr></table>
+
+    <div class="button-row">
+        <button mat-flat-button color="accent" type="submit" [disabled]="!customerForm.valid">Save</button>
+        <button mat-flat-button color="primary" (click)="goBack()">Go back</button>
+    </div>
+
+</form>

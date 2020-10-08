@@ -24,7 +24,6 @@ export class StockComponent implements OnInit {
 
   ngOnInit() {
     this.getStock();
-    // }, error => console.error(error));
     this.tableDataSrc.sort = this.sort;
     this.tableDataSrc.paginator = this.paginator;
   }

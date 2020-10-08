@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { FormBuilder } from '@angular/forms';
-import { Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { tap } from 'rxjs/operators';
 
 import { ProductService } from '../product.service';
@@ -62,4 +61,5 @@ export class ProductDetailComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
+
 }

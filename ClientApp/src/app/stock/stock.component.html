@@ -5,8 +5,7 @@
         <mat-icon matPrefix>search</mat-icon>
     </mat-form-field>
 
-    <a mat-raised-button color="primary" routerLink="/product">Add product</a>
-
+    <a mat-raised-button color="primary" routerLink="/product">New product</a>
 </div>
 
 <table mat-table [dataSource]="tableDataSrc" matSort class="mat-elevation-z8">
@@ -43,4 +42,4 @@
     <tr mat-row *matRowDef="let row; columns: tableCols"></tr>
 </table>
 
-<mat-paginator [pageSizeOptions]="[3, 5, 10, 20, 50]" showFirstLastButtons></mat-paginator>
+<mat-paginator [pageSizeOptions]="[5, 10, 20, 50]" showFirstLastButtons></mat-paginator>

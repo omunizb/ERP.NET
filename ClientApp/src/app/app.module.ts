@@ -9,7 +9,8 @@ import { StockComponent } from './stock/stock.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { EmployeesComponent } from './employees/employees.component';
 import { LoginComponent } from './login/login.component';
-import { CostumersComponent } from './costumers/costumers.component';
+import { CustomersComponent } from './customers/customers.component';
+import { CustomerDetailComponent } from './customer-detail/customer-detail.component';
 import { OrdersComponent } from './orders/orders.component';
 import { StatsComponent } from './stats/stats.component';
 
@@ -28,10 +29,11 @@ import { MatInputModule } from '@angular/material/input';
     StockComponent,
     EmployeesComponent,
     LoginComponent,
-    CostumersComponent,
+    CustomersComponent,
     OrdersComponent,
     StatsComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    CustomerDetailComponent
   ],
   imports: [
     BrowserModule,

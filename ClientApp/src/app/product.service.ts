@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { Product } from './product';
+import { Product } from './models';
 
 @Injectable({
   providedIn: 'root'
@@ -33,8 +33,8 @@ export class ProductService {
   }
 
   updateProduct(product: Product): Observable<any> {
-    const employeeUrl = `${this.stockUrl}/${product.idProduct}`;
-    return this.http.put(employeeUrl, product, this.httpOptions);
+    const url = `${this.stockUrl}/${product.idProduct}`;
+    return this.http.put(url, product, this.httpOptions);
   }
 
   addProduct(product: Product): Observable<Product> {
