@@ -33,14 +33,13 @@ export class StockComponent implements OnInit {
         .subscribe(stock => this.tableDataSrc.data = stock);
   }
 
-  delete(id: number): void {
-    this.productService.deleteProduct(id).subscribe();
-    this.getStock();
+  delete(product): void {
+    this.tableDataSrc.data = this.tableDataSrc.data.filter(p => p !== product);
+    this.productService.deleteProduct(product).subscribe();
   }
 
   onSearchInput(ev) {
     const searchTarget = ev.target.value;
     this.tableDataSrc.filter = searchTarget.trim().toLowerCase();
   }
-
 }

@@ -13,7 +13,7 @@ import { MatPaginator } from '@angular/material/paginator';
   styleUrls: ['./customers.component.css']
 })
 export class CustomersComponent implements OnInit {
-  title = 'Stock';
+  title = 'Customers';
   tableDataSrc = new MatTableDataSource();
   tableCols: string[] = [
     'idCustomer', 
@@ -47,14 +47,13 @@ export class CustomersComponent implements OnInit {
         .subscribe(customers => this.tableDataSrc.data = customers);
   }
 
-  delete(id: number): void {
-    this.customerService.deleteCustomer(id).subscribe();
-    this.getCustomers();
+  delete(customer): void {
+    this.tableDataSrc.data = this.tableDataSrc.data.filter(c => c !== customer);
+    this.customerService.deleteCustomer(customer).subscribe();
   }
 
   onSearchInput(ev) {
     const searchTarget = ev.target.value;
     this.tableDataSrc.filter = searchTarget.trim().toLowerCase();
   }
-
 }

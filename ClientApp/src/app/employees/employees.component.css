@@ -1,0 +1,31 @@
+.table-responsive {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+}
+
+.mat-cell, .mat-header-cell {
+    padding: 15px;
+}
+
+.mat-column-description {
+    text-align: justify;
+}
+
+.mat-form-field {
+    padding-right: 30px;
+    margin-left: 8px;
+    margin-top: 15px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.mat-raised-button {
+    position: absolute;
+    right: 0px;
+    margin: 30px 25px 0px 0px;  
+}

@@ -22,6 +22,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { EmployeeDetailComponent } from './employee-detail/employee-detail.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MatInputModule } from '@angular/material/input';
     OrdersComponent,
     StatsComponent,
     ProductDetailComponent,
-    CustomerDetailComponent
+    CustomerDetailComponent,
+    EmployeeDetailComponent
   ],
   imports: [
     BrowserModule,

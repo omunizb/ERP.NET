@@ -27,8 +27,8 @@ export class CustomerService {
     return this.http.get<Customer>(url);
   }
 
-  deleteCustomer(id: number): Observable<Customer> {
-    const url = `${this.customersUrl}/${id}`;
+  deleteCustomer(customer: Customer): Observable<Customer> {
+    const url = `${this.customersUrl}/${customer.idCustomer}`;
     return this.http.delete<Customer>(url, this.httpOptions);
   }
 

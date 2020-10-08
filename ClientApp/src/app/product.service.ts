@@ -27,8 +27,8 @@ export class ProductService {
     return this.http.get<Product>(url);
   }
 
-  deleteProduct(id: number): Observable<Product> {
-    const url = `${this.stockUrl}/${id}`;
+  deleteProduct(product: Product): Observable<Product> {
+    const url = `${this.stockUrl}/${product.idProduct}`;
     return this.http.delete<Product>(url, this.httpOptions);
   }
 

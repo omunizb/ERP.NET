@@ -21,3 +21,13 @@ export interface Customer {
     billingAddress: string;
     bankAccount: string;
 }
+
+export interface Employee {  
+    idEmployee?: number;  
+    name: string;  
+    surname: string;  
+    hired: Date;
+    departed?: Date;
+    salary: number;
+    position: string;
+}

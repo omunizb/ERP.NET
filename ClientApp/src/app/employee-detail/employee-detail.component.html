@@ -1,0 +1,46 @@
+<form [formGroup]="employeeForm" (ngSubmit)="onSubmit(employeeForm.getRawValue())">
+
+    <table cellspacing="0"><tr>
+        <td style="width:6em"><mat-form-field appearance="standard" style="width:6em">
+            <mat-label>ID</mat-label>
+            <input matInput formControlName="idEmployee" type="number">
+        </mat-form-field></td>
+        <td><mat-form-field appearance="standard">
+            <mat-label>Position</mat-label>
+            <input matInput formControlName="position" maxlength="100" required>
+        </mat-form-field></td>
+        <td><mat-form-field appearance="standard">
+            <mat-label>Salary</mat-label>
+            <input matInput formControlName="salary" type="number" min="0" step="0.01" required>
+            <span matPrefix>$&nbsp;</span>
+        </mat-form-field></td>
+    </tr></table>
+
+    <table cellspacing="0"><tr>
+        <td><mat-form-field appearance="standard">
+            <mat-label>Name</mat-label>
+                <input matInput formControlName="name" maxlength="35" required>
+        </mat-form-field></td>
+        <td><mat-form-field appearance="standard">
+            <mat-label>Surname</mat-label>
+                <input matInput formControlName="surname" maxlength="35" required>
+        </mat-form-field></td>
+    </tr></table>
+
+    <table cellspacing="0"><tr>
+        <td><mat-form-field appearance="standard">
+            <mat-label>Hired</mat-label>
+            <input matInput formControlName="hired" type="datetime-local">
+        </mat-form-field></td>
+        <td><mat-form-field appearance="standard">
+            <mat-label>Departed</mat-label>
+            <input matInput formControlName="departed" type="datetime-local">
+        </mat-form-field></td>
+    </tr></table>
+
+    <div class="button-row">
+        <button mat-flat-button color="accent" type="submit" [disabled]="!employeeForm.valid">Save</button>
+        <button mat-flat-button color="primary" (click)="goBack()">Go back</button>
+    </div>
+
+</form>
