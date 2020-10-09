@@ -6,6 +6,7 @@ import { tap } from 'rxjs/operators';
 
 import { OrderService } from '../order.service';
 import { EmployeeService } from '../employee.service';
+import { Employee } from '../models';
 
 @Component({
   selector: 'app-order-detail',
@@ -14,7 +15,7 @@ import { EmployeeService } from '../employee.service';
 })
 export class OrderDetailComponent implements OnInit {
   orderForm;
-  employees;
+  employees: Employee[] = [];
 
   constructor(
     private orderService: OrderService,
@@ -46,6 +47,8 @@ export class OrderDetailComponent implements OnInit {
   }
 
   onSubmit(orderData) {
+    orderData.idEmployee = parseInt(orderData.idEmployee);
+    orderData.priority = parseInt(orderData.priority);
     this.orderService.updateOrder(orderData).subscribe();
     this.orderService.getOrders().subscribe();
     this.router.navigate(['/orders']);
@@ -60,8 +63,7 @@ export class OrderDetailComponent implements OnInit {
 
   getEmployees(): void {
     this.employeeService.getEmployees()
-        .subscribe(employees => this.employees = employees);
-    console.log(this.employees)
+        .subscribe(employees => this.employees = employees as Employee[]);
   }
 
   goBack(): void {

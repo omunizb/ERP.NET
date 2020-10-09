@@ -192,7 +192,7 @@ namespace ERPProject.Data
                     Price = 6.60,
                     PriceVAT = 7.99,
                     State = "Delivered",
-                    Priority = 5,
+                    Priority = 2,
                     ExpectedDelivery = new DateTime(2017, 2, 2),
                     Delivered = new DateTime(2017, 2, 6, 12, 44, 57)
                 },
