@@ -1,0 +1,81 @@
+<form [formGroup]="orderForm" (ngSubmit)="onSubmit(orderForm.getRawValue())">
+
+    <table cellspacing="0"><tr>
+        <td style="width:6em"><mat-form-field appearance="standard" style="width:6em">
+            <mat-label>ID</mat-label>
+            <input matInput formControlName="idOrder" type="number">
+        </mat-form-field></td>
+        <td><mat-form-field appearance="standard">
+            <mat-label>Customer ID</mat-label>
+            <input matInput formControlName="idCustomer" type="number">
+        </mat-form-field></td>
+        <td><mat-form-field appearance="standard">
+            <mat-label>Product ID</mat-label>
+            <input matInput formControlName="idProduct" type="number">
+        </mat-form-field></td>
+        <td><mat-form-field appearance="fill">
+            <mat-label>Employee ID</mat-label>
+            <mat-select formControlName="idOrder" required>
+              <mat-option *ngFor="let employee of employees" [value]="employee.idEmployee">
+                {{employee.viewValue}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field></td>
+    </tr></table>
+
+    <table cellspacing="0"><tr>
+        <td><mat-form-field appearance="standard">
+            <mat-label>Time</mat-label>
+                <input matInput formControlName="time" type="datetime-local">
+        </mat-form-field></td>
+        <td><mat-form-field appearance="standard">
+            <mat-label>Quantity</mat-label>
+                <input matInput formControlName="quantity" type="number">
+        </mat-form-field></td>
+    </tr></table>
+
+    <table cellspacing="0"><tr>
+        <td><mat-form-field appearance="standard">
+            <mat-label>Price</mat-label>
+            <input matInput formControlName="price" type="number" step="0.01">
+            <span matPrefix>$&nbsp;</span>
+        </mat-form-field></td>
+        <td><mat-form-field appearance="standard">
+            <mat-label>VAT Inclusive Price</mat-label>
+            <input matInput formControlName="priceVAT" type="number" step="0.01">
+            <span matPrefix>$&nbsp;</span>
+        </mat-form-field></td>
+    </tr></table>
+
+    <table cellspacing="0"><tr>
+        <td><mat-form-field appearance="standard">
+            <mat-label>State</mat-label>
+            <input matInput formControlName="state">
+        </mat-form-field></td>
+        <td><mat-form-field appearance="standard">
+            <mat-label>Priority</mat-label>
+            <mat-select formControlName="priority" required>
+                <mat-option>1</mat-option>
+                <mat-option>2</mat-option>
+                <mat-option>3</mat-option>
+            </mat-select>
+        </mat-form-field></td>
+    </tr></table>
+
+    <table cellspacing="0"><tr>
+        <td><mat-form-field appearance="standard">
+            <mat-label>Expected Day of Delivery</mat-label>
+            <input matInput formControlName="expectedDelivery" type="datetime-local">
+        </mat-form-field></td>
+        <td><mat-form-field appearance="standard">
+            <mat-label>Delivered</mat-label>
+            <input matInput formControlName="delivered" type="datetime-local">
+        </mat-form-field></td>
+    </tr></table>
+
+    <div class="button-row">
+        <button mat-flat-button color="accent" type="submit" [disabled]="!orderForm.valid">Save</button>
+        <button mat-flat-button color="primary" (click)="goBack()">Go back</button>
+    </div>
+
+</form>

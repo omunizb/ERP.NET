@@ -36,5 +36,4 @@ export class CustomerService {
     const url = `${this.customersUrl}/${customer.idCustomer}`;
     return this.http.put(url, customer, this.httpOptions);
   }
-
 }

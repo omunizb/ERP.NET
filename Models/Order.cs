@@ -21,7 +21,6 @@ namespace ERPProject.Models
         [ForeignKey("Employee")]
         public long IdEmployee { get; set; }
         public DateTime Time { get; set; }
-        public bool Devolution { get; set; }
         public int Quantity { get; set; }
         public double Price { get; set; }
         public double PriceVAT { get; set; }

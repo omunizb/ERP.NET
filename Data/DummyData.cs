@@ -168,7 +168,7 @@ namespace ERPProject.Data
                     State = "Delivered",
                     Priority = 3,
                     ExpectedDelivery = new DateTime(2015, 3, 2),
-                    Delivered = new DateTime(2015, 3, 2)
+                    Delivered = new DateTime(2015, 3, 2, 11, 25, 04)
                 },
                 new Order {
                     IdCustomer = 2,
@@ -180,21 +180,21 @@ namespace ERPProject.Data
                     PriceVAT = 20.49,
                     State = "Out for delivery",
                     Priority = 1,
-                    ExpectedDelivery = new DateTime(2020, 6, 12)
+                    ExpectedDelivery = new DateTime(2020, 6, 12),
+                    Delivered = new DateTime(2020, 6, 12, 16, 11, 34)
                 },
                 new Order {
                     IdCustomer = 3,
                     IdEmployee = 3,
                     IdProduct = 3,
                     Time = new DateTime(2017, 1, 29, 9, 9, 55),
-                    Devolution = true,
                     Quantity = 1,
                     Price = 6.60,
                     PriceVAT = 7.99,
                     State = "Delivered",
                     Priority = 5,
                     ExpectedDelivery = new DateTime(2017, 2, 2),
-                    Delivered = new DateTime(2017, 2, 6)
+                    Delivered = new DateTime(2017, 2, 6, 12, 44, 57)
                 },
             };
             return orders;

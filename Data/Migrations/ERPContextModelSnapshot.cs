@@ -101,9 +101,6 @@ namespace ERPProject.Data.Migrations
                     b.Property<DateTime>("Delivered")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("Devolution")
-                        .HasColumnType("bit");
-
                     b.Property<DateTime>("ExpectedDelivery")
                         .HasColumnType("datetime2");
 

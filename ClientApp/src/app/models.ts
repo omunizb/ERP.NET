@@ -31,3 +31,18 @@ export interface Employee {
     salary: number;
     position: string;
 }
+
+export interface Order {
+    idOrder?: number;
+    idCustomer: number;
+    idProduct: number;   
+    idEmployee?: number;  
+    time: Date;  
+    quantity: number;
+    price: number;
+    priceVAT: number;
+    state: string;
+    priority: number;
+    expectedDelivery: Date;
+    delivered: Date;
+}

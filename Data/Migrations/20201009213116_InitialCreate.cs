@@ -57,7 +57,6 @@ namespace ERPProject.Data.Migrations
                     IdProduct = table.Column<long>(nullable: false),
                     IdEmployee = table.Column<long>(nullable: false),
                     Time = table.Column<DateTime>(nullable: false),
-                    Devolution = table.Column<bool>(nullable: false),
                     Quantity = table.Column<int>(nullable: false),
                     Price = table.Column<double>(nullable: false),
                     PriceVAT = table.Column<double>(nullable: false),

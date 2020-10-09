@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ERPProject.Data.Migrations
 {
     [DbContext(typeof(ERPContext))]
-    [Migration("20201002040239_InitialCreate")]
+    [Migration("20201009213116_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -102,9 +102,6 @@ namespace ERPProject.Data.Migrations
 
                     b.Property<DateTime>("Delivered")
                         .HasColumnType("datetime2");
-
-                    b.Property<bool>("Devolution")
-                        .HasColumnType("bit");
 
                     b.Property<DateTime>("ExpectedDelivery")
                         .HasColumnType("datetime2");
