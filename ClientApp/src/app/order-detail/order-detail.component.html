@@ -17,7 +17,7 @@
             <mat-label>Employee ID</mat-label>
             <mat-select formControlName="idEmployee" required>
               <mat-option *ngFor="let employee of employees" [value]="employee.idEmployee">
-                {{employee.idEmployee}}
+                {{ employee.idEmployee }}
               </mat-option>
             </mat-select>
         </mat-form-field></td>
@@ -55,9 +55,9 @@
         <td><mat-form-field appearance="fill">
             <mat-label>Priority</mat-label>
             <mat-select formControlName="priority" required>
-                <mat-option value="1">1</mat-option>
-                <mat-option value="2">2</mat-option>
-                <mat-option value="3">3</mat-option>
+                <mat-option *ngFor="let priority of priorities" [value]="priority">
+                    {{ priority }}
+                </mat-option>
             </mat-select>
         </mat-form-field></td>
     </tr></table>

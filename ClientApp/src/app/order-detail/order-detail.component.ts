@@ -16,6 +16,7 @@ import { Employee } from '../models';
 export class OrderDetailComponent implements OnInit {
   orderForm;
   employees: Employee[] = [];
+  priorities: number[] = [ 1, 2, 3 ];
 
   constructor(
     private orderService: OrderService,
@@ -47,8 +48,6 @@ export class OrderDetailComponent implements OnInit {
   }
 
   onSubmit(orderData) {
-    orderData.idEmployee = parseInt(orderData.idEmployee);
-    orderData.priority = parseInt(orderData.priority);
     this.orderService.updateOrder(orderData).subscribe();
     this.orderService.getOrders().subscribe();
     this.router.navigate(['/orders']);
@@ -64,6 +63,14 @@ export class OrderDetailComponent implements OnInit {
   getEmployees(): void {
     this.employeeService.getEmployees()
         .subscribe(employees => this.employees = employees as Employee[]);
+    
+    // Filter out former employees
+    const activeEmployeeDate: Date = new Date('0001');
+    this.employees.forEach(employee => {
+      if (employee.departed !== activeEmployeeDate) {
+        this.employees.splice(this.employees.indexOf(employee), 1);
+      }
+    });
   }
 
   goBack(): void {
