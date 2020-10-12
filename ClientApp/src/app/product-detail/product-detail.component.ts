@@ -24,7 +24,7 @@ export class ProductDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.productForm = this.formBuilder.group({
-      idProduct: [{ value: '', disabled: true }],
+      id: [{ value: '', disabled: true }],
       name: ['', [Validators.required, Validators.maxLength(200)]],
       category: ['', Validators.maxLength(100)],
       description: ['', Validators.maxLength(2000)],
@@ -43,7 +43,7 @@ export class ProductDetailComponent implements OnInit {
       this.productService.updateProduct(productData).subscribe();
     }
     else {
-      delete productData.idProduct;
+      delete productData.id;
       productData.purchases = 0;
       this.productService.addProduct(productData).subscribe();
     }

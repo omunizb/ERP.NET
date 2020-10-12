@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace ERPProject.Models
 {
-    public class Order
+    public class Order : IEntity
     {
         [Key]
-        public long IdOrder { get; set; }
+        public long Id { get; set; }
 
         [ForeignKey("Customer")]
         public long IdCustomer { get; set; }

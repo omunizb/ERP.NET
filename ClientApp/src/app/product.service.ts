@@ -28,12 +28,12 @@ export class ProductService {
   }
 
   deleteProduct(product: Product): Observable<Product> {
-    const url = `${this.stockUrl}/${product.idProduct}`;
+    const url = `${this.stockUrl}/${product.id}`;
     return this.http.delete<Product>(url, this.httpOptions);
   }
 
   updateProduct(product: Product): Observable<any> {
-    const url = `${this.stockUrl}/${product.idProduct}`;
+    const url = `${this.stockUrl}/${product.id}`;
     return this.http.put(url, product, this.httpOptions);
   }
 

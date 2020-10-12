@@ -28,12 +28,12 @@ export class CustomerService {
   }
 
   deleteCustomer(customer: Customer): Observable<Customer> {
-    const url = `${this.customersUrl}/${customer.idCustomer}`;
+    const url = `${this.customersUrl}/${customer.id}`;
     return this.http.delete<Customer>(url, this.httpOptions);
   }
 
   updateCustomer(customer: Customer): Observable<any> {
-    const url = `${this.customersUrl}/${customer.idCustomer}`;
+    const url = `${this.customersUrl}/${customer.id}`;
     return this.http.put(url, customer, this.httpOptions);
   }
 }

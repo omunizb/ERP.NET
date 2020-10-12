@@ -21,7 +21,7 @@ namespace ERPProject.Data.Migrations
 
             modelBuilder.Entity("ERPProject.Models.Customer", b =>
                 {
-                    b.Property<long>("IdCustomer")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -56,14 +56,14 @@ namespace ERPProject.Data.Migrations
                     b.Property<int>("TotalPurchases")
                         .HasColumnType("int");
 
-                    b.HasKey("IdCustomer");
+                    b.HasKey("Id");
 
                     b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("ERPProject.Models.Employee", b =>
                 {
-                    b.Property<long>("IdEmployee")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -86,14 +86,14 @@ namespace ERPProject.Data.Migrations
                     b.Property<string>("Surname")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("IdEmployee");
+                    b.HasKey("Id");
 
                     b.ToTable("Employees");
                 });
 
             modelBuilder.Entity("ERPProject.Models.Order", b =>
                 {
-                    b.Property<long>("IdOrder")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -131,14 +131,14 @@ namespace ERPProject.Data.Migrations
                     b.Property<DateTime>("Time")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("IdOrder");
+                    b.HasKey("Id");
 
                     b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("ERPProject.Models.Product", b =>
                 {
-                    b.Property<long>("IdProduct")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -161,7 +161,7 @@ namespace ERPProject.Data.Migrations
                     b.Property<int>("Stock")
                         .HasColumnType("int");
 
-                    b.HasKey("IdProduct");
+                    b.HasKey("Id");
 
                     b.ToTable("Products");
                 });

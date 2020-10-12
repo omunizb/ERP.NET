@@ -28,12 +28,12 @@ export class EmployeeService {
   }
 
   deleteEmployee(employee: Employee): Observable<Employee> {
-    const url = `${this.employeesUrl}/${employee.idEmployee}`;
+    const url = `${this.employeesUrl}/${employee.id}`;
     return this.http.delete<Employee>(url, this.httpOptions);
   }
 
   updateEmployee(employee: Employee): Observable<any> {
-    const url = `${this.employeesUrl}/${employee.idEmployee}`;
+    const url = `${this.employeesUrl}/${employee.id}`;
     return this.http.put(url, employee, this.httpOptions);
   }
 

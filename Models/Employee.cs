@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace ERPProject.Models
 {
-    public class Employee
+    public class Employee : IEntity
     {
         [Key]
-        public long IdEmployee { get; set; }
+        public long Id { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public DateTime Hired { get; set; }

@@ -29,7 +29,7 @@ export class OrderDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.orderForm = this.formBuilder.group({
-      idOrder: [{ value: '', disabled: true }],
+      id: [{ value: '', disabled: true }],
       idCustomer: [{ value: '', disabled: true }],
       idProduct: [{ value: '', disabled: true }],
       idEmployee: ['', Validators.required],

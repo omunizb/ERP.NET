@@ -13,6 +13,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using ERPProject.Data.Repositories;
 
 namespace ERPProject
 {
@@ -47,6 +48,13 @@ namespace ERPProject
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            #region register repositories
+            services.AddScoped<ProductRepository>();
+            services.AddScoped<CustomerRepository>();
+            services.AddScoped<EmployeeRepository>();
+            services.AddScoped<OrderRepository>();
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

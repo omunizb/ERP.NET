@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace ERPProject.Models
 {
-    public class Product
+    public class Product : IEntity
     {
         [Key]
-        public long IdProduct { get; set; }
+        public long Id { get; set; }
         public string Name { get; set; }
         public string Category { get; set; }
         public string Description { get; set; }

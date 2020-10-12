@@ -15,7 +15,7 @@ import { MatPaginator } from '@angular/material/paginator';
 export class StockComponent implements OnInit {
   title = 'Stock';
   tableDataSrc = new MatTableDataSource();
-  tableCols: string[] = ['idProduct', 'name', 'category', 'description', 'currentPrice', 'stock', 'purchases', 'update', 'delete'];
+  tableCols: string[] = ['id', 'name', 'category', 'description', 'currentPrice', 'stock', 'purchases', 'update', 'delete'];
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;

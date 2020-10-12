@@ -28,12 +28,12 @@ export class OrderService {
   }
 
   deleteOrder(order: Order): Observable<Order> {
-    const url = `${this.ordersUrl}/${order.idOrder}`;
+    const url = `${this.ordersUrl}/${order.id}`;
     return this.http.delete<Order>(url, this.httpOptions);
   }
 
   updateOrder(order: Order): Observable<any> {
-    const url = `${this.ordersUrl}/${order.idOrder}`;
+    const url = `${this.ordersUrl}/${order.id}`;
     return this.http.put(url, order, this.httpOptions);
   }
 }

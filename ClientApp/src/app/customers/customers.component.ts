@@ -16,7 +16,7 @@ export class CustomersComponent implements OnInit {
   title = 'Customers';
   tableDataSrc = new MatTableDataSource();
   tableCols: string[] = [
-    'idCustomer', 
+    'id', 
     'name', 
     'surname', 
     'email', 

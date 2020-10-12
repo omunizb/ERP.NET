@@ -11,7 +11,7 @@ namespace ERPProject.Data.Migrations
                 name: "Customers",
                 columns: table => new
                 {
-                    IdCustomer = table.Column<long>(nullable: false)
+                    Id = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(nullable: true),
                     Surname = table.Column<string>(nullable: true),
@@ -26,14 +26,14 @@ namespace ERPProject.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Customers", x => x.IdCustomer);
+                    table.PrimaryKey("PK_Customers", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Employees",
                 columns: table => new
                 {
-                    IdEmployee = table.Column<long>(nullable: false)
+                    Id = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(nullable: true),
                     Surname = table.Column<string>(nullable: true),
@@ -44,14 +44,14 @@ namespace ERPProject.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Employees", x => x.IdEmployee);
+                    table.PrimaryKey("PK_Employees", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Orders",
                 columns: table => new
                 {
-                    IdOrder = table.Column<long>(nullable: false)
+                    Id = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IdCustomer = table.Column<long>(nullable: false),
                     IdProduct = table.Column<long>(nullable: false),
@@ -67,14 +67,14 @@ namespace ERPProject.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Orders", x => x.IdOrder);
+                    table.PrimaryKey("PK_Orders", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Products",
                 columns: table => new
                 {
-                    IdProduct = table.Column<long>(nullable: false)
+                    Id = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(nullable: true),
                     Category = table.Column<string>(nullable: true),
@@ -85,7 +85,7 @@ namespace ERPProject.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Products", x => x.IdProduct);
+                    table.PrimaryKey("PK_Products", x => x.Id);
                 });
         }
 

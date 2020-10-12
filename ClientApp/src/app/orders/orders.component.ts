@@ -16,7 +16,7 @@ export class OrdersComponent implements OnInit {
   title = 'Orders';
   tableDataSrc = new MatTableDataSource();
   tableCols: string[] = [
-    'idOrder', 
+    'id', 
     'idCustomer', 
     'idProduct', 
     'idEmployee', 

@@ -1,20 +1,20 @@
 export interface Product {  
-    idProduct?: number;  
+    id: number;  
     name: string;  
-    category?: string;  
-    description?: string;  
+    category: string;  
+    description: string;  
     currentPrice: number;
-    stock?: number;
+    stock: number;
     purchases: number;
 }
 
 export interface Customer {  
-    idCustomer?: number;  
+    id: number;  
     name: string;  
     surname: string;  
     email: string;  
-    firstPurchase?: Date;
-    latestPurchase?: Date;
+    firstPurchase: Date;
+    latestPurchase: Date;
     totalExpenditure: number;
     totalPurchases: number;
     deliveryAddress: string;
@@ -23,20 +23,20 @@ export interface Customer {
 }
 
 export interface Employee {  
-    idEmployee?: number;  
+    id: number;  
     name: string;  
     surname: string;  
     hired: Date;
-    departed?: Date;
+    departed: Date;
     salary: number;
     position: string;
 }
 
 export interface Order {
-    idOrder?: number;
+    id: number;
     idCustomer: number;
     idProduct: number;   
-    idEmployee?: number;  
+    idEmployee: number;  
     time: Date;  
     quantity: number;
     price: number;

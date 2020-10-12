@@ -24,7 +24,7 @@ export class EmployeeDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.employeeForm = this.formBuilder.group({
-      idEmployee: [{ value: '', disabled: true }],
+      id: [{ value: '', disabled: true }],
       name: ['', [Validators.required, Validators.maxLength(35)]],
       surname: ['', [Validators.required, Validators.maxLength(35)]],
       hired: [{ value: '', disabled: true }],
@@ -43,7 +43,7 @@ export class EmployeeDetailComponent implements OnInit {
       this.employeeService.updateEmployee(employeeData).subscribe();
     }
     else {
-      delete employeeData.idEmployee;
+      delete employeeData.id;
       employeeData.hired = new Date();
       employeeData.departed = new Date('0001');
       this.employeeService.addEmployee(employeeData).subscribe();
