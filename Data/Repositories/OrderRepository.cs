@@ -14,9 +14,24 @@ namespace ERPProject.Data.Repositories
 
         }
 
-        public async Task<List<Order>> GetByDate(DateTime date)
+        public async Task<List<double>> GetByDate(int year, int month)
         {
-            return await GetContext().Set<Order>().Where(d => d.Time.Month == date.Month && d.Time.Year == date.Year).ToListAsync();
+            var ordersByDate = await GetContext().Set<Order>().Where(d => d.Time.Month == month && d.Time.Year == year).ToListAsync();
+
+            List<double> stats = new List<double>();
+
+            double totalUnits =
+                (from order in ordersByDate
+                select order.Quantity).Sum();
+
+            double revenue =
+                (from order in ordersByDate
+                select order.Price).Sum();
+
+            stats.Add(totalUnits);
+            stats.Add(revenue);
+
+            return stats;
         }
     }
 }

@@ -23,10 +23,9 @@ namespace ERPProject.Controllers
         }
 
         [HttpGet("{year:int}/{month:int}")]
-        public async Task<ActionResult<IEnumerable<Order>>> GetByDate(int year, int month)
+        public async Task<ActionResult<IEnumerable<double>>> GetByDate(int year, int month)
         {
-            DateTime date = new DateTime(year, month, 1);
-            return await GetRepository().GetByDate(date);
+            return await GetRepository().GetByDate(year, month);
         }
     }
 }
