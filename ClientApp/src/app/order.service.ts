@@ -22,6 +22,13 @@ export class OrderService {
     return this.ordersData$;
   }
 
+  getStats(date: Date): Observable<number[]> {
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+    const url = `${this.ordersUrl}/${year}/${month}`;
+    return this.http.get<number[]>(url);
+  }
+
   getOrder(id: number): Observable<Order> {
     const url = `${this.ordersUrl}/${id}`;
     return this.http.get<Order>(url);

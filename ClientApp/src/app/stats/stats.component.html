@@ -1,1 +1,16 @@
-<p>stats works!</p>
+<div class="center">
+    <mat-form-field appearance="fill">
+        <mat-label>Choose a month</mat-label>
+        <input matInput [matDatepicker]="picker" [min]="minDate" [max]="maxDate" [value]="date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker
+                        startView="multi-year"
+                        (monthSelected)="chosenMonthHandler($event, picker)">
+        </mat-datepicker>
+    </mat-form-field>
+</div>
+
+    <ul>
+        <li>{{ stats[0] }} units sold</li>
+        <li>${{ stats[1] }} in sales</li>
+    </ul>
