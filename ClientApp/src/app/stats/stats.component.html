@@ -10,7 +10,16 @@
     </mat-form-field>
 </div>
 
-    <ul>
-        <li>{{ stats[0] }} units sold</li>
-        <li>${{ stats[1] }} in sales</li>
-    </ul>
+<div class="background">
+    <h1>{{ date | date:'MMMM' }} {{ date | date:'y' }}</h1>
+</div>
+<div class="row">
+    <div class="column">
+        <h1>{{ stats[0] }}</h1>
+        <h3>units sold</h3>
+    </div>
+    <div class="column">
+        <h1>${{ stats[1] }}</h1>
+        <h3>in sales</h3>
+    </div>
+</div>

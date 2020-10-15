@@ -2,3 +2,37 @@
     padding-top: 25px;
     text-align: center;
 }
+
+.row {
+    color:#48B;
+}
+
+.background {
+    background-color: #48B;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 50%;
+    padding: 15px;
+    text-align: center;
+    margin-top: 50px;
+}
+  
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+  
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width:600px) {
+    .column {
+        width: 100%;
+    }
+}
