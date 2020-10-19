@@ -7,14 +7,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { EmployeesComponent } from './employees/employees.component';
 import { EmployeeDetailComponent } from './employee-detail/employee-detail.component';
-import { CustomersComponent } from './customers/customers.component';
-import { CustomerDetailComponent } from './customer-detail/customer-detail.component';
 import { OrdersComponent } from './orders/orders.component';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
 import { StatsComponent } from './stats/stats.component';
 import { LoginComponent } from './login/login.component';
 
 import { StockModule } from './stock/stock.module';
+import { CustomersModule } from './customers/customers.module';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
@@ -33,10 +32,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     AppComponent,
     EmployeesComponent,
     LoginComponent,
-    CustomersComponent,
     OrdersComponent,
     StatsComponent,
-    CustomerDetailComponent,
     EmployeeDetailComponent,
     OrderDetailComponent
   ],
@@ -56,7 +53,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    StockModule
+    StockModule,
+    CustomersModule
   ],
   providers: [],
   bootstrap: [AppComponent]

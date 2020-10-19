@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CustomersComponent } from './customers/customers.component';
-import { CustomerDetailComponent } from './customer-detail/customer-detail.component';
 import { EmployeesComponent } from './employees/employees.component';
 import { EmployeeDetailComponent } from './employee-detail/employee-detail.component';
 import { OrdersComponent } from './orders/orders.component';
@@ -11,8 +9,7 @@ import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: 'stock', loadChildren: () => import('./stock/stock.module').then(m => m.StockModule) },
-  { path: 'customers', component: CustomersComponent },
-  { path: 'customer-detail/:id', component: CustomerDetailComponent },
+  { path: 'customers', loadChildren: () => import('./customers/customers.module').then(m => m.CustomersModule) },
   { path: 'employees', component: EmployeesComponent },
   { path: 'employee-detail', component: EmployeeDetailComponent },
   { path: 'employee-detail/:id', component: EmployeeDetailComponent },
