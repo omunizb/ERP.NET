@@ -5,8 +5,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { StockComponent } from './stock/stock.component';
-import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { EmployeesComponent } from './employees/employees.component';
 import { EmployeeDetailComponent } from './employee-detail/employee-detail.component';
 import { CustomersComponent } from './customers/customers.component';
@@ -15,6 +13,8 @@ import { OrdersComponent } from './orders/orders.component';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
 import { StatsComponent } from './stats/stats.component';
 import { LoginComponent } from './login/login.component';
+
+import { StockModule } from './stock/stock.module';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
@@ -31,13 +31,11 @@ import { MatNativeDateModule } from '@angular/material/core';
 @NgModule({
   declarations: [
     AppComponent,
-    StockComponent,
     EmployeesComponent,
     LoginComponent,
     CustomersComponent,
     OrdersComponent,
     StatsComponent,
-    ProductDetailComponent,
     CustomerDetailComponent,
     EmployeeDetailComponent,
     OrderDetailComponent
@@ -57,7 +55,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     ReactiveFormsModule,
     MatSelectModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    StockModule
   ],
   providers: [],
   bootstrap: [AppComponent]

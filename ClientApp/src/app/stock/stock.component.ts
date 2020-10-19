@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ProductService } from '../product.service';
+import { ProductService } from './product.service';
 
 import { ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
@@ -8,9 +8,15 @@ import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
-  selector: 'app-stock',
-  templateUrl: './stock.component.html',
-  styleUrls: ['./stock.component.css']
+  template: `
+    <h2>Stock</h2>
+    <router-outlet></router-outlet>
+  `,
+  styles: [`
+    h2 {
+      padding: 15px;
+    {
+  `],
 })
 export class StockComponent implements OnInit {
   title = 'Stock';
