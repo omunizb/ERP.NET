@@ -5,7 +5,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { tap } from 'rxjs/operators';
 
 import { OrderService } from '../order.service';
-import { EmployeeService } from '../employee.service';
+import { EmployeeService } from '../employees/employee.service';
 import { Employee } from '../models';
 
 @Component({

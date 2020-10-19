@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
     h2 {
       padding: 15px; text-align: center; color: #48B; font-family: 'Spartan', sans-serif;
     {
-  `],
+  `]
 })
 export class StockComponent implements OnInit {
 

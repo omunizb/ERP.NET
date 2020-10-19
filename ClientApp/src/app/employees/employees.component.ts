@@ -1,55 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 
-import { EmployeeService } from '../employee.service';
-
-import { ViewChild } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatSort } from '@angular/material/sort';
-import { MatPaginator } from '@angular/material/paginator';
-
 @Component({
-  selector: 'app-employees',
-  templateUrl: './employees.component.html',
-  styleUrls: ['./employees.component.css']
+  template: `
+    <h2>Employees</h2>
+    <router-outlet></router-outlet>
+  `,
+  styles: [`
+    h2 {
+      padding: 15px; text-align: center; color: #48B; font-family: 'Spartan', sans-serif;
+    {
+  `]
 })
 export class EmployeesComponent implements OnInit {
-  title = 'Employees';
-  tableDataSrc = new MatTableDataSource();
-  tableCols: string[] = [
-    'id', 
-    'name', 
-    'surname', 
-    'hired', 
-    'departed', 
-    'salary', 
-    'position',
-    'update',
-    'delete'
-  ];
-  
-  @ViewChild(MatSort, {static: true}) sort: MatSort;
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
-  constructor(private employeeService: EmployeeService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.getEmployees();
-    this.tableDataSrc.sort = this.sort;
-    this.tableDataSrc.paginator = this.paginator;
-  }
 
-  getEmployees(): void {
-    this.employeeService.getEmployees()
-        .subscribe(employees => this.tableDataSrc.data = employees);
-  }
-
-  delete(employee): void {
-    this.tableDataSrc.data = this.tableDataSrc.data.filter(e => e !== employee);
-    this.employeeService.deleteEmployee(employee).subscribe();
-  }
-
-  onSearchInput(ev) {
-    const searchTarget = ev.target.value;
-    this.tableDataSrc.filter = searchTarget.trim().toLowerCase();
   }
 }

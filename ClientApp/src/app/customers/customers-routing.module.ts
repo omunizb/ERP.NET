@@ -10,7 +10,6 @@ const routes: Routes = [
     component: CustomersComponent,
     children: [
       { path: '', component: CustomersListComponent },
-      { path: 'detail', component: CustomerDetailComponent },
       { path: 'detail/:id', component: CustomerDetailComponent }
     ]
   }
