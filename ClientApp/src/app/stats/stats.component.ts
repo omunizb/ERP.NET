@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
-import { AppDateAdapter, APP_DATE_FORMATS } from '../datepicker-format';
+import { AppDateAdapter, APP_DATE_FORMATS } from './datepicker-format';
 
-import { OrderService } from '../orders/order.service';
+import { StatsService } from './stats.service';
 
 @Component({
   selector: 'app-stats',
@@ -19,7 +19,7 @@ export class StatsComponent implements OnInit {
   minDate: Date;
   maxDate: Date;
 
-  constructor(private orderService: OrderService) { }
+  constructor(private statsService: StatsService) { }
 
   ngOnInit(): void {
     const currentYear = new Date().getFullYear();
@@ -36,7 +36,7 @@ export class StatsComponent implements OnInit {
   }
 
   getStats(date: Date) {
-    this.orderService.getStats(date)
+    this.statsService.getStats(date)
     .subscribe(stats => this.stats = stats);
   }
 }

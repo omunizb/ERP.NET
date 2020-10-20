@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { StatsComponent } from './stats/stats.component';
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
@@ -8,7 +7,7 @@ const routes: Routes = [
   { path: 'customers', loadChildren: () => import('./customers/customers.module').then(m => m.CustomersModule) },
   { path: 'employees', loadChildren: () => import('./employees/employees.module').then(m => m.EmployeesModule) },
   { path: 'orders', loadChildren: () => import('./orders/orders.module').then(m => m.OrdersModule) },
-  { path: 'stats', component: StatsComponent },
+  { path: 'stats', loadChildren: () => import('./stats/stats.module').then(m => m.StatsModule) },
   { path: 'login', component: LoginComponent },
   { path: '**', redirectTo: 'stock', pathMatch: 'full' }
 ];
