@@ -5,14 +5,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { OrdersComponent } from './orders/orders.component';
-import { OrderDetailComponent } from './order-detail/order-detail.component';
 import { StatsComponent } from './stats/stats.component';
 import { LoginComponent } from './login/login.component';
 
 import { StockModule } from './stock/stock.module';
 import { CustomersModule } from './customers/customers.module';
 import { EmployeesModule } from './employees/employees.module';
+import { OrdersModule } from './orders/orders.module';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
@@ -30,9 +29,7 @@ import { MatNativeDateModule } from '@angular/material/core';
   declarations: [
     AppComponent,
     LoginComponent,
-    OrdersComponent,
     StatsComponent,
-    OrderDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +49,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatNativeDateModule,
     StockModule,
     CustomersModule,
-    EmployeesModule
+    EmployeesModule,
+    OrdersModule
   ],
   providers: [],
   bootstrap: [AppComponent]

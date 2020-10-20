@@ -16,8 +16,8 @@
         <td><mat-form-field appearance="fill">
             <mat-label>Employee ID</mat-label>
             <mat-select formControlName="idEmployee" required>
-              <mat-option *ngFor="let employee of employees" [value]="employee.idEmployee">
-                {{ employee.idEmployee }}
+              <mat-option *ngFor="let employee of employees" [value]="employee.id">
+                {{ employee.id }}
               </mat-option>
             </mat-select>
         </mat-form-field></td>

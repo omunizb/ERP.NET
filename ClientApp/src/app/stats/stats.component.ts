@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
 import { AppDateAdapter, APP_DATE_FORMATS } from '../datepicker-format';
 
-import { OrderService } from '../order.service';
+import { OrderService } from '../orders/order.service';
 
 @Component({
   selector: 'app-stats',
