@@ -9,14 +9,13 @@ import { CustomersModule } from './customers/customers.module';
 import { EmployeesModule } from './employees/employees.module';
 import { OrdersModule } from './orders/orders.module';
 import { StatsModule } from './stats/stats.module';
+import { LoginModule } from './login/login.module';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    LoginComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +26,8 @@ import { LoginComponent } from './login/login.component';
     CustomersModule,
     EmployeesModule,
     OrdersModule,
-    StatsModule
+    StatsModule,
+    LoginModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,1 +1,23 @@
-<p>login works!</p>
+<div>
+    <h1><strong class="spartan">ITTACA </strong><strong class="italic">ERP</strong></h1>
+</div>
+
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+
+        <mat-form-field appearance="outline">
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="username" maxlength="320" required>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" minlength="8" maxlength="128" required>
+            <button mat-icon-button type="button" matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+
+    <div class="button">
+        <button mat-flat-button color="primary" type="submit" [disabled]="!loginForm.valid">Sign-In</button>
+    </div>
+
+</form>

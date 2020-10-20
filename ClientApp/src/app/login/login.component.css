@@ -1,0 +1,35 @@
+form {
+    margin: auto;
+    width: 25%;
+    margin-top: 25px;
+}
+  
+.mat-form-field {
+    width: 100%;
+    padding-right: 8px;
+}
+
+.button {
+    margin: auto;
+    width: 25%;
+    padding-top: 25px;
+}
+
+div {
+    width: 100%;
+    text-align: center;
+    margin-top: 25px;
+}
+
+h1 {
+    color: #48B;
+}
+
+.spartan {
+    font-family: 'Spartan', sans-serif;
+}
+
+.italic {
+    font-style: italic;
+    font-size: 1.2em;
+}
