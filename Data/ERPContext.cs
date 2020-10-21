@@ -1,11 +1,18 @@
 ﻿using ERPProject.Models;
+using IdentityServer4.EntityFramework.Options;
+using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 namespace ERPProject.Data
 {
-    public class ERPContext : DbContext
+    public class ERPContext : ApiAuthorizationDbContext<User>
     {
-        public ERPContext(DbContextOptions<ERPContext> options) : base(options) { }
+        public ERPContext(
+            DbContextOptions options,
+            IOptions<OperationalStoreOptions> operationalStoreOptions) : base(options, operationalStoreOptions)
+        {
+        }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

@@ -14,6 +14,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using ERPProject.Data.Repositories;
+using ERPProject.Models;
+using Microsoft.AspNetCore.Authentication;
 
 namespace ERPProject
 {
@@ -33,6 +35,15 @@ namespace ERPProject
                opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddControllers();
+
+            services.AddDefaultIdentity<User>()
+                .AddEntityFrameworkStores<ERPContext>();
+
+            services.AddIdentityServer()
+                .AddApiAuthorization<User, ERPContext>();
+
+            services.AddAuthentication()
+                .AddIdentityServerJwt();
 
             services.AddCors(o => o.AddPolicy("ERPPolicy", builder =>
             {
@@ -77,8 +88,9 @@ namespace ERPProject
 
             app.UseCors("ERPPolicy");
 
+            app.UseAuthentication();
+            app.UseIdentityServer();
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
