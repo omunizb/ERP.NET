@@ -12,9 +12,6 @@ using ERPProject.Data.Repositories;
 
 namespace ERPProject.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    [EnableCors("ERPPolicy")]
     public class OrdersController : GenericController<Order, OrderRepository>
     {
         public OrdersController(OrderRepository repository) : base(repository)

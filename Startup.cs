@@ -36,7 +36,7 @@ namespace ERPProject
 
             services.AddControllers();
 
-            services.AddDefaultIdentity<User>()
+            services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ERPContext>();
 
             services.AddIdentityServer()
@@ -53,6 +53,7 @@ namespace ERPProject
             }));
 
             services.AddControllersWithViews();
+            services.AddRazorPages();
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -74,6 +75,13 @@ namespace ERPProject
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Error");
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                app.UseHsts();
             }
 
             app.UseHttpsRedirection();
@@ -94,6 +102,7 @@ namespace ERPProject
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapRazorPages();
             });
 
             app.UseSpa(spa =>
