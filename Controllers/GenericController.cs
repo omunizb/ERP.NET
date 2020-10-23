@@ -13,7 +13,6 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace ERPProject.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     [EnableCors("ERPPolicy")]
