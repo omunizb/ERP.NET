@@ -9,15 +9,18 @@ import { CustomersModule } from './customers/customers.module';
 import { EmployeesModule } from './employees/employees.module';
 import { OrdersModule } from './orders/orders.module';
 import { StatsModule } from './stats/stats.module';
-import { LoginModule } from './login/login.module';
+import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.module';
+import { MatButtonModule } from '@angular/material/button';
 
 import { AppComponent } from './app.component';
-import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.module';
+import { HomeComponent } from './home/home.component';
+
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -29,8 +32,8 @@ import { AuthorizeInterceptor } from 'src/api-authorization/authorize.intercepto
     EmployeesModule,
     OrdersModule,
     StatsModule,
-    LoginModule,
-    ApiAuthorizationModule
+    ApiAuthorizationModule,
+    MatButtonModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }

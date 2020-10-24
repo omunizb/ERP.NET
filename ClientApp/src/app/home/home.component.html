@@ -1,0 +1,12 @@
+<div>
+    <p><strong class="spartan">ITTACA </strong><strong><em>ERP</em></strong></p>
+</div>
+<div class="meander"></div>
+<div *ngIf="!(isAuthenticated | async); else start">
+    <a mat-raised-button color="primary" routerLink="/authentication/login">Log In</a>
+</div>
+<ng-template #start>
+    <div>
+        <a mat-raised-button color="primary" routerLink="/stock">Start</a>
+    </div>
+</ng-template>

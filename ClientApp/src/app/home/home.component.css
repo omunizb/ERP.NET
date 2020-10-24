@@ -1,0 +1,28 @@
+div {
+    width: 100%;
+    text-align: center;
+    margin-top: 25px;
+}
+
+#start {
+    width: 100%;
+    text-align: center;
+    margin-top: 25px;
+}
+
+.meander {
+    background-image: url('/assets/img/ittaca_meander.png');
+    background-repeat: repeat-x;
+    height: 180px; /* You must set a specified height */
+    background-position: center; /* Center the image */
+    margin-top: 0px;
+}
+
+.spartan {
+    font-family: 'Spartan', sans-serif;
+}
+
+p {
+    color: #48B;
+    font-size: 4em;
+}
