@@ -1,21 +1,3 @@
-a {
-    color: #fff;
-    text-decoration: none;
-}
-a:visited {
-    color: #fff;
-}
-a:hover, a:active, a:focus {
-    color:#fff;
-}
-
-.navbar-left
-{
-    font-family: 'Spartan', sans-serif;
-    font-size: 48px;
-    margin-right: 50px;
-}
-
 footer {
     position: fixed;
     left: 0;
