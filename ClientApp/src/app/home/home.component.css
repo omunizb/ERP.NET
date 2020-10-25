@@ -16,6 +16,7 @@ div {
     height: 180px; /* You must set a specified height */
     background-position: center; /* Center the image */
     margin-top: 0px;
+    margin-bottom: 50px;
 }
 
 .spartan {
