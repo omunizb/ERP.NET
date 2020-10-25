@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -12,12 +12,12 @@ export class StatsService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) { }
 
   getStats(date: Date): Observable<number[]> {
     const month = date.getMonth() + 1;
     const year = date.getFullYear();
-    const url = `${this.ordersUrl}/${year}/${month}`;
+    const url = `${this.baseUrl + this.ordersUrl}/${year}/${month}`;
     return this.http.get<number[]>(url);
   }
 }

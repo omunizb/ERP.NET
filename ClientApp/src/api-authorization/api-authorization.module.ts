@@ -5,7 +5,8 @@ import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { RouterModule } from '@angular/router';
 import { ApplicationPaths } from './api-authorization.constants';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthorizeInterceptor } from './authorize.interceptor';
 
 @NgModule({
   imports: [
@@ -25,6 +26,9 @@ import { HttpClientModule } from '@angular/common/http';
     )
   ],
   declarations: [LoginMenuComponent, LoginComponent, LogoutComponent],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }
+  ],
   exports: [LoginMenuComponent, LoginComponent, LogoutComponent]
 })
 export class ApiAuthorizationModule { }

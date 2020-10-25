@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Product } from '../models';
@@ -15,25 +15,25 @@ export class ProductService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) { }
 
   getStock(): Observable<Product[]> {
-    this.stockData$ = this.http.get<Product[]>(this.stockUrl);
+    this.stockData$ = this.http.get<Product[]>(this.baseUrl + this.stockUrl);
     return this.stockData$;
   }
 
   getProduct(id: number): Observable<Product> {
-    const url = `${this.stockUrl}/${id}`;
+    const url = `${this.baseUrl + this.stockUrl}/${id}`;
     return this.http.get<Product>(url);
   }
 
   deleteProduct(product: Product): Observable<Product> {
-    const url = `${this.stockUrl}/${product.id}`;
+    const url = `${this.baseUrl + this.stockUrl}/${product.id}`;
     return this.http.delete<Product>(url, this.httpOptions);
   }
 
   updateProduct(product: Product): Observable<any> {
-    const url = `${this.stockUrl}/${product.id}`;
+    const url = `${this.baseUrl + this.stockUrl}/${product.id}`;
     return this.http.put(url, product, this.httpOptions);
   }
 
