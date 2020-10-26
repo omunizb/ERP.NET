@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using ERPProject.Data.Repositories;
 using ERPProject.Models;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Identity;
 
 namespace ERPProject
 {
@@ -37,6 +38,7 @@ namespace ERPProject
             services.AddControllers();
 
             services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ERPContext>();
 
             services.AddIdentityServer()

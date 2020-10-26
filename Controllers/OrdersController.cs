@@ -9,6 +9,7 @@ using ERPProject.Data;
 using ERPProject.Models;
 using Microsoft.AspNetCore.Cors;
 using ERPProject.Data.Repositories;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ERPProject.Controllers
 {
