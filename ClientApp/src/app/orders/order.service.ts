@@ -8,8 +8,7 @@ import { Order } from '../models';
 })
 export class OrderService {
   private ordersUrl = 'api/orders';
-  private ordersDataSource = new BehaviorSubject<any>('');
-  ordersData$ = this.ordersDataSource.asObservable();
+  private ordersDataSource = new BehaviorSubject<Observable<Order[]>>(null);
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -18,8 +17,8 @@ export class OrderService {
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) { }
 
   getOrders(): Observable<Order[]> {
-    this.ordersData$ = this.http.get<Order[]>(this.baseUrl + this.ordersUrl);
-    return this.ordersData$;
+    this.ordersDataSource.next(this.http.get<Order[]>(this.baseUrl + this.ordersUrl));
+    return this.ordersDataSource.value;
   }
 
   getOrder(id: number): Observable<Order> {

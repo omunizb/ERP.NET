@@ -8,8 +8,7 @@ import { Employee } from '../models';
 })
 export class EmployeeService {
   private employeesUrl = 'api/employees';
-  private employeesDataSource = new BehaviorSubject<any>('');
-  employeesData$ = this.employeesDataSource.asObservable();
+  private employeesDataSource = new BehaviorSubject<Observable<Employee[]>>(null);
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -18,8 +17,8 @@ export class EmployeeService {
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) { }
 
   getEmployees(): Observable<Employee[]> {
-    this.employeesData$ = this.http.get<Employee[]>(this.baseUrl + this.employeesUrl);
-    return this.employeesData$;
+    this.employeesDataSource.next(this.http.get<Employee[]>(this.baseUrl + this.employeesUrl));
+    return this.employeesDataSource.value;
   }
 
   getEmployee(id: number): Observable<Employee> {

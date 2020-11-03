@@ -48,7 +48,6 @@ export class EmployeeDetailComponent implements OnInit {
       employeeData.departed = new Date('0001');
       this.employeeService.addEmployee(employeeData).subscribe();
     }
-    this.employeeService.getEmployees().subscribe();
     this.router.navigate(['/employees']);
   }
 

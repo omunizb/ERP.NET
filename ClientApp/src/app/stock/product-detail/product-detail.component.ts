@@ -47,7 +47,6 @@ export class ProductDetailComponent implements OnInit {
       productData.purchases = 0;
       this.productService.addProduct(productData).subscribe();
     }
-    this.productService.getStock().subscribe();
     this.router.navigate(['/stock']);
   }
 

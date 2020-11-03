@@ -42,7 +42,6 @@ export class CustomerDetailComponent implements OnInit {
 
   onSubmit(customerData) {
     this.customerService.updateCustomer(customerData).subscribe();
-    this.customerService.getCustomers().subscribe();
     this.router.navigate(['/customers']);
   }
 

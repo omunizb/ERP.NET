@@ -8,8 +8,7 @@ import { Product } from '../models';
 })
 export class ProductService {
   private stockUrl = 'api/products';
-  private stockDataSource = new BehaviorSubject<any>('');
-  stockData$ = this.stockDataSource.asObservable();
+  private stockDataSource = new BehaviorSubject<Observable<Product[]>>(null);
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -18,8 +17,8 @@ export class ProductService {
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) { }
 
   getStock(): Observable<Product[]> {
-    this.stockData$ = this.http.get<Product[]>(this.baseUrl + this.stockUrl);
-    return this.stockData$;
+    this.stockDataSource.next(this.http.get<Product[]>(this.baseUrl + this.stockUrl));
+    return this.stockDataSource.value;
   }
 
   getProduct(id: number): Observable<Product> {
@@ -38,6 +37,6 @@ export class ProductService {
   }
 
   addProduct(product: Product): Observable<Product> {
-    return this.http.post<Product>(this.stockUrl, product, this.httpOptions);
+    return this.http.post<Product>(this.baseUrl + this.stockUrl, product, this.httpOptions);
   }
 }
