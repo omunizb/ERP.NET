@@ -49,7 +49,6 @@ export class OrderDetailComponent implements OnInit {
 
   onSubmit(orderData) {
     this.orderService.updateOrder(orderData).subscribe();
-    this.orderService.getOrders().subscribe();
     this.router.navigate(['/orders']);
   }
 

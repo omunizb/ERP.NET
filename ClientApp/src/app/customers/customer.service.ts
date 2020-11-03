@@ -8,8 +8,7 @@ import { Customer } from '../models';
 })
 export class CustomerService {
   private customersUrl = 'api/customers';
-  private customersDataSource = new BehaviorSubject<any>('');
-  customersData$ = this.customersDataSource.asObservable();
+  private customersDataSource = new BehaviorSubject<Observable<Customer[]>>(null);
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -18,8 +17,8 @@ export class CustomerService {
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) { }
 
   getCustomers(): Observable<Customer[]> {
-    this.customersData$ = this.http.get<Customer[]>(this.baseUrl + this.customersUrl);
-    return this.customersData$;
+    this.customersDataSource.next(this.http.get<Customer[]>(this.baseUrl + this.customersUrl));
+    return this.customersDataSource.value;
   }
 
   getCustomer(id: number): Observable<Customer> {
