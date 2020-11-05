@@ -9,9 +9,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { StatsGraphComponent } from '../stats-graph/stats-graph.component';
 
 @NgModule({
-  declarations: [StatsComponent],
+  declarations: [StatsComponent, StatsGraphComponent],
   imports: [
     CommonModule,
     MatFormFieldModule,
