@@ -1,42 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
-import { AppDateAdapter, APP_DATE_FORMATS } from './datepicker-format';
-
-import { StatsService } from './stats.service';
 
 @Component({
-  selector: 'app-stats',
-  templateUrl: './stats.component.html',
-  styleUrls: ['./stats.component.css'],
-  providers: [
-    {provide: DateAdapter, useClass: AppDateAdapter},
-    {provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS}
-  ]
+  template: `
+    <h2>Statistics</h2>
+    <router-outlet></router-outlet>
+  `,
+  styles: [`
+    h2 {
+      padding: 15px; text-align: center; color: #48B; font-family: 'Spartan', sans-serif;
+    {
+  `]
 })
-export class StatsComponent implements OnInit {  
-  date: Date;
-  stats: number[] = [0, 0];
-  minDate: Date;
-  maxDate: Date;
+export class StatsComponent implements OnInit {
 
-  constructor(private statsService: StatsService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    const currentYear = new Date().getFullYear();
-    const currentMonth = new Date().getMonth();
-    this.minDate = new Date(2015, 0, 1);
-    this.maxDate = new Date(currentYear, (currentMonth - 1) % 12, 1);
-    this.date = this.maxDate;
-  }
 
-  chosenMonthHandler(eventData: Date, picker?: any) {
-    this.date = eventData;
-    this.getStats(eventData);
-    picker.close();
-  }
-
-  getStats(date: Date) {
-    this.statsService.getStats(date)
-    .subscribe(stats => this.stats = stats);
   }
 }
