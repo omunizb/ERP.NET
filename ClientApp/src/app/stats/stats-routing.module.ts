@@ -9,8 +9,8 @@ const routes: Routes = [
   { path: '', 
     component: StatsComponent,
     children: [
-      { path: '', component: StatsDatepickerComponent },
-      { path: 'graph', component: StatsGraphComponent }
+      { path: '', component: StatsGraphComponent },
+      { path: 'datepicker', component: StatsDatepickerComponent }
     ] }
 ];
 

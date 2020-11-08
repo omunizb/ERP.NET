@@ -24,14 +24,16 @@
     "@angular/router": "~10.0.2",
     "@nguniversal/module-map-ngfactory-loader": "8.2.6",
     "aspnet-prerendering": "^3.0.1",
-    "oidc-client": "^1.9.1",
+    "chart.js": "^2.9.4",
+    "ng2-charts": "^2.4.2",
     "object-path": "^0.11.5",
+    "oidc-client": "^1.9.1",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.3",
     "zone.js": "~0.10.3"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.1000.1",
+    "@angular-devkit/build-angular": "^0.1002.0",
     "@angular/cli": "~10.0.1",
     "@angular/compiler-cli": "~10.0.2",
     "@types/jasmine": "~3.5.0",
