@@ -69,6 +69,9 @@ namespace ERPProject.Data.Migrations
                     b.Property<DateTime>("Departed")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("Hired")
                         .HasColumnType("datetime2");
 

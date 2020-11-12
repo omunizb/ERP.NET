@@ -91,6 +91,7 @@ namespace ERPProject.Data.Migrations
                     Id = table.Column<Guid>(nullable: false),
                     Name = table.Column<string>(nullable: true),
                     Surname = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: true),
                     Hired = table.Column<DateTime>(nullable: false),
                     Departed = table.Column<DateTime>(nullable: false),
                     Salary = table.Column<double>(nullable: false),

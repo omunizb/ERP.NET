@@ -18,7 +18,8 @@ export class EmployeesListComponent implements OnInit {
   tableCols: string[] = [
     'id', 
     'name', 
-    'surname', 
+    'surname',
+    'email', 
     'hired', 
     'departed', 
     'salary', 

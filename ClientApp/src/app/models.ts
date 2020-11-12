@@ -25,7 +25,8 @@ export interface Customer {
 export interface Employee {  
     id: string;  
     name: string;  
-    surname: string;  
+    surname: string; 
+    email: string; 
     hired: Date;
     departed: Date;
     salary: number;

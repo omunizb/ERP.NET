@@ -1,12 +1,9 @@
 ﻿using ERPProject.Models;
-using IdentityServer4.Events;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 // Adapted from https://github.com/medhatelmasry/HealthAPI/blob/master/HealthAPI/Data/DummyData.cs
 namespace ERPProject.Data
@@ -100,6 +97,7 @@ namespace ERPProject.Data
                     Id = IDs[1, 0],
                     Name = "Mikaela",
                     Surname = "Gomis",
+                    Email = "mikaelagomis@ittaca.com",
                     Hired = new DateTime(2018, 9, 15),
                     Salary = 31560.56,
                     Position = "Attendant"
@@ -108,6 +106,7 @@ namespace ERPProject.Data
                     Id = IDs[1, 1],
                     Name = "Kevin",
                     Surname = "Garcia",
+                    Email = "kevingarcia@ittaca.com",
                     Hired = new DateTime(2015, 5, 23),
                     Salary = 31560.56,
                     Position = "Attendant"
@@ -116,6 +115,7 @@ namespace ERPProject.Data
                     Id = IDs[1, 2],
                     Name = "Joan",
                     Surname = "Cot",
+                    Email = "joancot@ittaca.com",
                     Hired = new DateTime(2019, 10, 5),
                     Salary = 63810.13,
                     Position = "Manager"

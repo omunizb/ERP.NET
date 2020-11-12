@@ -1,6 +1,5 @@
 ﻿using ERPProject.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -22,11 +21,11 @@ namespace ERPProject.Data.Repositories
 
             double totalUnits =
                 (from order in ordersByDate
-                select order.Quantity).Sum();
+                 select order.Quantity).Sum();
 
             double revenue =
                 (from order in ordersByDate
-                select order.Price).Sum();
+                 select order.Price).Sum();
 
             stats.Add(totalUnits);
             stats.Add(revenue);

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ERPProject.Data.Migrations
 {
     [DbContext(typeof(ERPContext))]
-    [Migration("20201112123828_InitialCreate")]
+    [Migration("20201112211809_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -70,6 +70,9 @@ namespace ERPProject.Data.Migrations
 
                     b.Property<DateTime>("Departed")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Hired")
                         .HasColumnType("datetime2");

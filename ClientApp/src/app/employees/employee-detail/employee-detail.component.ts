@@ -27,6 +27,7 @@ export class EmployeeDetailComponent implements OnInit {
       id: [{ value: '', disabled: true }],
       name: ['', [Validators.required, Validators.maxLength(35)]],
       surname: ['', [Validators.required, Validators.maxLength(35)]],
+      email: ['', [Validators.required, Validators.maxLength(320)]],
       hired: [{ value: '', disabled: true }],
       departed: [{ value: '', disabled: true }],
       salary: ['', Validators.required],

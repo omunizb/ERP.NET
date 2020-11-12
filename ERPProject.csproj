@@ -28,10 +28,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\Migrations\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="Pages\Error.cshtml" />
     <None Include="Pages\Shared\_LoginPartial.cshtml" />
     <None Include="Pages\_ViewImports.cshtml" />
