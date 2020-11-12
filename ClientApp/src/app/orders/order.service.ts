@@ -36,7 +36,7 @@ export class OrderService {
     return this.ordersDataSource.value;
   }
 
-  getOrder(id: number): Observable<Order> {
+  getOrder(id: string): Observable<Order> {
     const url = `${this.baseUrl + this.ordersUrl}/${id}`;
     return this.http.get<Order>(url).pipe(
       catchError(this.handleError<Order>(`getOrder id=${id}`)));

@@ -30,9 +30,9 @@ export class OrderDetailComponent implements OnInit {
   ngOnInit(): void {
     this.orderForm = this.formBuilder.group({
       id: [{ value: '', disabled: true }],
-      idCustomer: [{ value: '', disabled: true }],
-      idProduct: [{ value: '', disabled: true }],
-      idEmployee: ['', Validators.required],
+      customerId: [{ value: '', disabled: true }],
+      productId: [{ value: '', disabled: true }],
+      employeeId: ['', Validators.required],
       time: [{ value: '', disabled: true }],
       quantity: [{ value: '', disabled: true }],
       price: [{ value: '', disabled: true }],
@@ -53,7 +53,7 @@ export class OrderDetailComponent implements OnInit {
   }
 
   getOrder(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get('id');
     this.orderService.getOrder(id)
       .pipe(tap(order => this.orderForm.patchValue(order)))
       .subscribe();

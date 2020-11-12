@@ -47,12 +47,12 @@ namespace ERPProject
             services.AddAuthentication()
                 .AddIdentityServerJwt();
 
-            services.AddCors(o => o.AddPolicy("ERPPolicy", builder =>
+            /* services.AddCors(o => o.AddPolicy("ERPPolicy", builder =>
             {
                 builder.AllowAnyOrigin()
                        .AllowAnyMethod()
                        .AllowAnyHeader();
-            }));
+            })); */
 
             services.AddControllersWithViews();
             services.AddRazorPages();
@@ -96,7 +96,7 @@ namespace ERPProject
 
             app.UseRouting();
 
-            app.UseCors("ERPPolicy");
+            // app.UseCors("ERPPolicy");
 
             app.UseAuthentication();
             app.UseIdentityServer();

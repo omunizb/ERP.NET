@@ -16,7 +16,7 @@ namespace ERPProject.Controllers
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    [EnableCors("ERPPolicy")]
+    // [EnableCors("ERPPolicy")]
     public class GenericController<TEntity, TRepository> : ControllerBase
         where TEntity : class, IEntity
         where TRepository : IRepository<TEntity>
@@ -58,7 +58,7 @@ namespace ERPProject.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(long id, TEntity entity)
+        public async Task<IActionResult> Put(Guid id, TEntity entity)
         {
             if (id != entity.Id)
             {

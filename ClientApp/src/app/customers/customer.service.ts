@@ -36,7 +36,7 @@ export class CustomerService {
     return this.customersDataSource.value;
   }
 
-  getCustomer(id: number): Observable<Customer> {
+  getCustomer(id: string): Observable<Customer> {
     const url = `${this.baseUrl + this.customersUrl}/${id}`;
     return this.http.get<Customer>(url).pipe(
       catchError(this.handleError<Customer>(`getCustomer id=${id}`)));

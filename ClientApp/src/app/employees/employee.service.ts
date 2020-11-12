@@ -36,7 +36,7 @@ export class EmployeeService {
     return this.employeesDataSource.value;
   }
 
-  getEmployee(id: number): Observable<Employee> {
+  getEmployee(id: string): Observable<Employee> {
     const url = `${this.baseUrl + this.employeesUrl}/${id}`;
     return this.http.get<Employee>(url).pipe(
       catchError(this.handleError<Employee>(`getEmployee id=${id}`)));

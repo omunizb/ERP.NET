@@ -52,7 +52,7 @@ export class EmployeeDetailComponent implements OnInit {
   }
 
   getEmployee(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get('id');
     this.employeeService.getEmployee(id)
       .pipe(tap(employee => this.employeeForm.patchValue(employee)))
       .subscribe();

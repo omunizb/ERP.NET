@@ -46,7 +46,7 @@ export class CustomerDetailComponent implements OnInit {
   }
 
   getCustomer(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get('id');
     this.customerService.getCustomer(id)
       .pipe(tap(customer => this.customerForm.patchValue(customer)))
       .subscribe();

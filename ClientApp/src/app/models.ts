@@ -1,5 +1,5 @@
 export interface Product {  
-    id: number;  
+    id: string;  
     name: string;  
     category: string;  
     description: string;  
@@ -9,7 +9,7 @@ export interface Product {
 }
 
 export interface Customer {  
-    id: number;  
+    id: string;  
     name: string;  
     surname: string;  
     email: string;  
@@ -23,7 +23,7 @@ export interface Customer {
 }
 
 export interface Employee {  
-    id: number;  
+    id: string;  
     name: string;  
     surname: string;  
     hired: Date;
@@ -33,10 +33,10 @@ export interface Employee {
 }
 
 export interface Order {
-    id: number;
-    idCustomer: number;
-    idProduct: number;   
-    idEmployee: number;  
+    id: string;
+    customerId: number;
+    productId: number;   
+    employeeId: number;  
     time: Date;  
     quantity: number;
     price: number;

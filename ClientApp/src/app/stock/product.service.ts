@@ -36,7 +36,7 @@ export class ProductService {
     return this.stockDataSource.value;
   }
 
-  getProduct(id: number): Observable<Product> {
+  getProduct(id: string): Observable<Product> {
     const url = `${this.baseUrl + this.stockUrl}/${id}`;
     return this.http.get<Product>(url).pipe(
       catchError(this.handleError<Product>(`getProduct id=${id}`)));

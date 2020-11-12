@@ -1,5 +1,7 @@
 ﻿using ERPProject.Models;
+using IdentityServer4.Events;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -11,6 +13,11 @@ namespace ERPProject.Data
 {
     public class DummyData
     {
+        static readonly Guid[,] IDs = new Guid[3, 3] {
+            { Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid() },
+            { Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid() },
+            { Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid() }
+        };
         public static void Initialize(IApplicationBuilder app)
         {
             using var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope();
@@ -42,6 +49,7 @@ namespace ERPProject.Data
         {
             List<Product> products = new List<Product>() {
                 new Product {
+                    Id = IDs[0, 0],
                     Name="Earbuds 100X",
                     Category="Electronics",
                     Description = "The best earbuds in the market!",
@@ -50,6 +58,7 @@ namespace ERPProject.Data
                     Purchases = 102
                 },
                 new Product {
+                    Id = IDs[0, 1],
                     Name="Blue shirt",
                     Category="Men's Shirts",
                     Description = "A top-quality cotton shirt, in blue",
@@ -58,6 +67,7 @@ namespace ERPProject.Data
                     Purchases = 323
                 },
                 new Product {
+                    Id = IDs[0, 2],
                     Name="The Handmaid's Tale",
                     Category="Books",
                     Description = @"#1 New York Times bestseller. Look for The Testaments, the 
@@ -87,6 +97,7 @@ namespace ERPProject.Data
         {
             List<Employee> employees = new List<Employee>() {
                 new Employee {
+                    Id = IDs[1, 0],
                     Name = "Mikaela",
                     Surname = "Gomis",
                     Hired = new DateTime(2018, 9, 15),
@@ -94,6 +105,7 @@ namespace ERPProject.Data
                     Position = "Attendant"
                 },
                 new Employee {
+                    Id = IDs[1, 1],
                     Name = "Kevin",
                     Surname = "Garcia",
                     Hired = new DateTime(2015, 5, 23),
@@ -101,6 +113,7 @@ namespace ERPProject.Data
                     Position = "Attendant"
                 },
                 new Employee {
+                    Id = IDs[1, 2],
                     Name = "Joan",
                     Surname = "Cot",
                     Hired = new DateTime(2019, 10, 5),
@@ -115,6 +128,7 @@ namespace ERPProject.Data
         {
             List<Customer> customers = new List<Customer>() {
                 new Customer {
+                    Id = IDs[2, 0],
                     Name = "Nuria",
                     Surname = "Rossi",
                     Email = "nuriarossi@gmail.com",
@@ -127,6 +141,7 @@ namespace ERPProject.Data
                     BankAccount = "ES9121000418450200051332",
                 },
                 new Customer {
+                    Id = IDs[2, 1],
                     Name = "Hector",
                     Surname = "Roca",
                     Email = "hectorroca@gmail.com",
@@ -139,6 +154,7 @@ namespace ERPProject.Data
                     BankAccount = "ES4031907163513548452719",
                 },
                 new Customer {
+                    Id = IDs[2, 2],
                     Name = "Alex",
                     Surname = "Perez",
                     Email = "alexperez@gmail.com",
@@ -158,9 +174,9 @@ namespace ERPProject.Data
         {
             List<Order> orders = new List<Order>() {
                 new Order {
-                    IdCustomer = 1,
-                    IdEmployee = 1,
-                    IdProduct = 1,
+                    CustomerId = IDs[2, 0],
+                    EmployeeId = IDs[1, 0],
+                    ProductId = IDs[0, 0],
                     Time = new DateTime(2015, 2, 27, 19, 18, 54),
                     Quantity = 1,
                     Price = 14.87,
@@ -171,9 +187,9 @@ namespace ERPProject.Data
                     Delivered = new DateTime(2015, 3, 2, 11, 25, 04)
                 },
                 new Order {
-                    IdCustomer = 2,
-                    IdEmployee = 2,
-                    IdProduct = 2,
+                    CustomerId = IDs[2, 1],
+                    EmployeeId = IDs[1, 1],
+                    ProductId = IDs[0, 1],
                     Time = new DateTime(2020, 6, 11, 18, 10, 24),
                     Quantity = 1,
                     Price = 16.93,
@@ -184,9 +200,9 @@ namespace ERPProject.Data
                     Delivered = new DateTime(2020, 6, 12, 16, 11, 34)
                 },
                 new Order {
-                    IdCustomer = 3,
-                    IdEmployee = 3,
-                    IdProduct = 3,
+                    CustomerId = IDs[2, 2],
+                    EmployeeId = IDs[1, 2],
+                    ProductId = IDs[0, 2],
                     Time = new DateTime(2017, 1, 29, 9, 9, 55),
                     Quantity = 1,
                     Price = 6.60,

@@ -51,7 +51,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   getProduct(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get('id');
     this.productService.getProduct(id)
       .pipe(tap(product => this.productForm.patchValue(product)))
       .subscribe();
