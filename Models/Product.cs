@@ -13,6 +13,6 @@ namespace ERPProject.Models
         public int Stock { get; set; }
         public int Purchases { get; set; }
 
-        public List<Order> Orders { get; set; }
+        public virtual List<Order> Orders { get; set; }
     }
 }

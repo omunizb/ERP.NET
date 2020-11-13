@@ -15,7 +15,7 @@ namespace ERPProject.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.9")
+                .HasAnnotation("ProductVersion", "3.1.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -140,6 +140,8 @@ namespace ERPProject.Data.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("Orders");
+
+                    b.HasCheckConstraint("CK_Orders_State", "State IN ('Delivered', 'Out for delivery', 'Canceled', 'Pending', 'Unshipped')");
                 });
 
             modelBuilder.Entity("ERPProject.Models.Product", b =>

@@ -1,5 +1,6 @@
 ﻿using ERPProject.Models;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -21,7 +22,7 @@ namespace ERPProject.Data.Repositories
             _context = context;
         }
 
-        public async Task<TEntity> Get(long id)
+        public async Task<TEntity> Get(Guid id)
         {
             return await _context.Set<TEntity>().FindAsync(id);
         }
@@ -45,7 +46,7 @@ namespace ERPProject.Data.Repositories
             return entity;
         }
 
-        public async Task<TEntity> Delete(long id)
+        public async Task<TEntity> Delete(Guid id)
         {
             var entity = await _context.Set<TEntity>().FindAsync(id);
             if (entity == null)

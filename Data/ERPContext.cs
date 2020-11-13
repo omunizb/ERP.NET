@@ -17,6 +17,9 @@ namespace ERPProject.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
+            builder.Entity<Order>(entity =>
+                entity.HasCheckConstraint("CK_Orders_State", "State IN ('Delivered', 'Out for delivery', 'Canceled', 'Pending', 'Unshipped')"));
         }
 
         public DbSet<Customer> Customers { get; set; }

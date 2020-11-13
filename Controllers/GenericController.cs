@@ -37,7 +37,7 @@ namespace ERPProject.Controllers
 
         // GET: api/[controller]/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<TEntity>> Get(long id)
+        public async Task<ActionResult<TEntity>> Get(Guid id)
         {
             var entity = await _repository.Get(id);
 
@@ -78,7 +78,7 @@ namespace ERPProject.Controllers
 
         // DELETE: api/Orders/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<TEntity>> Delete(long id)
+        public async Task<ActionResult<TEntity>> Delete(Guid id)
         {
 
             var entity = await _repository.Delete(id);

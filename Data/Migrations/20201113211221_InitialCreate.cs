@@ -262,6 +262,7 @@ namespace ERPProject.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Orders", x => x.Id);
+                    table.CheckConstraint("CK_Orders_State", "State IN ('Delivered', 'Out for delivery', 'Canceled', 'Pending', 'Unshipped')");
                     table.ForeignKey(
                         name: "FK_Orders_Customers_CustomerId",
                         column: x => x.CustomerId,
