@@ -28,8 +28,6 @@ namespace ERPProject
             services.AddDbContext<ERPContext>(opt =>
                opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddControllers();
-
             services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ERPContext>();
