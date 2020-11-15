@@ -1,15 +1,18 @@
+using ERPProject.Areas.Identity;
 using ERPProject.Data;
 using ERPProject.Data.Repositories;
 using ERPProject.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Threading.Tasks;
 
 namespace ERPProject
 {
@@ -96,6 +99,11 @@ namespace ERPProject
             {
                 endpoints.MapControllers();
                 endpoints.MapRazorPages();
+
+                endpoints.MapGet("/Identity/Account/Register", context =>
+                    Task.Factory.StartNew(() => context.Response.Redirect("/Identity/Account/Login", true, true)));
+                endpoints.MapPost("/Identity/Account/Register", context => 
+                    Task.Factory.StartNew(() => context.Response.Redirect("/Identity/Account/Login", true, true)));
             });
 
             app.UseSpa(spa =>
