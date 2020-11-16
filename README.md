@@ -1,7 +1,7 @@
 # Ittaca ERP
 ## An Enterprise Resource Planning for a (fictional) e-commerce company: Ittaca.
 
-**NOTE: this project will be uploaded to an Azure App Service in the following days. The URL will be displayed here.** 
+**NOTE: this project will be uploaded to Azure App Service in the following days. The URL will be displayed here.** 
 
 ### Getting started
 1. Download the code from this repository.
