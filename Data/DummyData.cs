@@ -1,9 +1,12 @@
 ﻿using ERPProject.Models;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 // Adapted from https://github.com/medhatelmasry/HealthAPI/blob/master/HealthAPI/Data/DummyData.cs
 namespace ERPProject.Data
@@ -21,7 +24,7 @@ namespace ERPProject.Data
             var context = serviceScope.ServiceProvider.GetService<ERPContext>();
             context.Database.EnsureCreated();
 
-            // Look for any events
+            // Look for any products
             if (context.Products != null && context.Products.Any())
                 return;
 
@@ -214,6 +217,35 @@ namespace ERPProject.Data
                 },
             };
             return orders;
+        }
+        public static async Task GetUsers(IServiceProvider serviceProvider)
+        {
+            using var serviceScope = serviceProvider.GetService<IServiceScopeFactory>().CreateScope();
+            var context = serviceScope.ServiceProvider.GetService<ERPContext>();
+            context.Database.EnsureCreated();
+            var userManager = serviceProvider.GetService<UserManager<User>>();
+
+            if (!context.Users.Any())
+            {
+                List<User> users = new List<User>() {
+                    new User {
+                        UserName = "Admin",
+                        Email = "admin@example.com",
+                        EmailConfirmed = true
+                    },
+                    new User {
+                        UserName = "Employee",
+                        Email = "employee@example.com",
+                        EmailConfirmed = true
+                    }
+                };
+
+                foreach (User user in users)
+                {
+                    var result = await userManager.CreateAsync(user, "IttacaERP#1");
+                }
+                context.SaveChanges();
+            }
         }
     }
 }
