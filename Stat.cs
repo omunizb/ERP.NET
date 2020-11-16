@@ -3,7 +3,7 @@
     public class Stat
     {
         public string Label { get; set; }
-        public string Units { get; set; }
-        public string Revenue { get; set; }
+        public double Units { get; set; }
+        public double Revenue { get; set; }
     }
 }

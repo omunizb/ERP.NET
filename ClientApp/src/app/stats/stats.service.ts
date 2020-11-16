@@ -1,6 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Stat } from '../models';
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +20,10 @@ export class StatsService {
     const year = date.getFullYear();
     const url = `${this.baseUrl + this.ordersUrl}/${year}/${month}`;
     return this.http.get<number[]>(url);
+  }
+
+  getMonthlySales(): Observable<Stat[]> {
+    const url = `${this.baseUrl + this.ordersUrl}/getmonthlysales`;
+    return this.http.get<Stat[]>(url);
   }
 }

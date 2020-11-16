@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Color, BaseChartDirective, Label } from 'ng2-charts';
+import { StatsService } from '../stats.service';
 
 @Component({
   selector: 'app-stats-graph',
@@ -10,10 +11,10 @@ import { Color, BaseChartDirective, Label } from 'ng2-charts';
 })
 export class StatsGraphComponent implements OnInit {
   public lineChartData: ChartDataSets[] = [
-    { data: [2800, 4800, 4000, 2900, 8600, 9000, 2700], label: 'units sold per month' },
-    { data: [18000, 48000, 43000, 19000, 100000, 85000, 27000], label: 'monthly revenues (USD)', yAxisID: 'y-axis-1' }
+    { data: [2800, 4800, 4000, 2900, 8600, 9000 /*, 2700*/], label: 'units sold per month' },
+    { data: [18000, 48000, 43000, 19000, 100000, 85000 /*, 27000*/], label: 'monthly revenues (USD)', yAxisID: 'y-axis-1' }
   ];
-  public lineChartLabels: Label[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+  public lineChartLabels: Label[] = this.getLabels();//['January', 'February', 'March', 'April', 'May', 'June', 'July'];
   public lineChartOptions: (ChartOptions) = {
     responsive: true,
     scales: {
@@ -32,7 +33,7 @@ export class StatsGraphComponent implements OnInit {
           id: 'y-axis-1',
           position: 'right',
           gridLines: {
-            color: 'rgba(255,0,0,0.3)',
+            color: 'rgba(103,58,183,0.4)',
           },
           ticks: {
             fontColor: 'rgba(103,58,183,1)',
@@ -69,9 +70,19 @@ export class StatsGraphComponent implements OnInit {
 
   @ViewChild(BaseChartDirective, { static: true }) chart: BaseChartDirective;
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private statsService: StatsService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  getLabels(): Label[] {
+    var labels = [];
+    this.statsService.getMonthlySales()
+    .subscribe(sales => sales.forEach(s => labels.push(s.label)));
+    return labels;
   }
 
   // events

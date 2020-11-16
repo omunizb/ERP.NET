@@ -47,3 +47,9 @@ export interface Order {
     expectedDelivery: Date;
     delivered: Date;
 }
+
+export interface Stat {
+    label: string;
+    units: number;
+    revenue: number;
+}

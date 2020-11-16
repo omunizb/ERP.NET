@@ -11,7 +11,6 @@ namespace ERPProject.Controllers
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    // [EnableCors("ERPPolicy")]
     public class GenericController<TEntity, TRepository> : ControllerBase
         where TEntity : class, IEntity
         where TRepository : IRepository<TEntity>

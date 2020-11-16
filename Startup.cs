@@ -1,4 +1,3 @@
-using ERPProject.Areas.Identity;
 using ERPProject.Data;
 using ERPProject.Data.Repositories;
 using ERPProject.Models;
@@ -42,13 +41,6 @@ namespace ERPProject
             services.AddAuthentication()
                 .AddIdentityServerJwt();
 
-            /* services.AddCors(o => o.AddPolicy("ERPPolicy", builder =>
-            {
-                builder.AllowAnyOrigin()
-                       .AllowAnyMethod()
-                       .AllowAnyHeader();
-            })); */
-
             services.AddControllersWithViews();
             services.AddRazorPages();
 
@@ -91,8 +83,6 @@ namespace ERPProject
 
             app.UseRouting();
 
-            // app.UseCors("ERPPolicy");
-
             app.UseAuthentication();
             app.UseIdentityServer();
             app.UseAuthorization();
@@ -103,7 +93,7 @@ namespace ERPProject
 
                 endpoints.MapGet("/Identity/Account/Register", context =>
                     Task.Factory.StartNew(() => context.Response.Redirect("/Identity/Account/Login", true, true)));
-                endpoints.MapPost("/Identity/Account/Register", context => 
+                endpoints.MapPost("/Identity/Account/Register", context =>
                     Task.Factory.StartNew(() => context.Response.Redirect("/Identity/Account/Login", true, true)));
             });
 

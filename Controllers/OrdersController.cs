@@ -18,5 +18,11 @@ namespace ERPProject.Controllers
         {
             return await GetRepository().GetByDate(year, month);
         }
+
+        [HttpGet("{action}")]
+        public async Task<ActionResult<IEnumerable<Stat>>> GetMonthlySales()
+        {
+            return await GetRepository().GetMonthlySales();
+        }
     }
 }
