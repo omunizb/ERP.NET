@@ -223,9 +223,19 @@ namespace ERPProject.Data
             var context = serviceScope.ServiceProvider.GetService<ERPContext>();
             context.Database.EnsureCreated();
             var userManager = serviceProvider.GetService<UserManager<User>>();
+            var roleManager = serviceProvider.GetService<RoleManager<IdentityRole>>();
 
             if (!context.Users.Any())
             {
+                string[] roles = new string[] { "Admin", "Employee" };
+                foreach (string role in roles)
+                {
+                    if (!await roleManager.RoleExistsAsync(role))
+                    {
+                        await roleManager.CreateAsync(new IdentityRole(role));
+                    }
+                }
+
                 List<User> users = new List<User>() {
                     new User {
                         UserName = "Admin",
@@ -241,7 +251,8 @@ namespace ERPProject.Data
 
                 foreach (User user in users)
                 {
-                    var result = await userManager.CreateAsync(user, "IttacaERP#1");
+                    await userManager.CreateAsync(user, "IttacaERP#1");
+                    await userManager.AddToRoleAsync(user, user.UserName);
                 }
                 context.SaveChanges();
             }
