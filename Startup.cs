@@ -44,6 +44,8 @@ namespace ERPProject
             services.AddControllersWithViews();
             services.AddRazorPages();
 
+            services.AddDatabaseDeveloperPageExceptionFilter();
+
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
@@ -64,7 +66,7 @@ namespace ERPProject
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();
+                app.UseMigrationsEndPoint();
             }
             else
             {
