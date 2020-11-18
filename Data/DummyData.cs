@@ -251,7 +251,7 @@ namespace ERPProject.Data
 
                 foreach (User user in users)
                 {
-                    await userManager.CreateAsync(user, "IttacaERP#1");
+                    await userManager.CreateAsync(user, "Pass123$");
                     await userManager.AddToRoleAsync(user, user.UserName);
                 }
                 context.SaveChanges();
