@@ -4,6 +4,7 @@ import { Observable, BehaviorSubject, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { Employee } from '../models';
 import { MessageService } from '../messages/message.service';
+import { RolesService } from '../roles.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,7 @@ export class EmployeeService {
 
   constructor(
     private messageService: MessageService,
+    private rolesService: RolesService,
     private http: HttpClient,
     @Inject('BASE_URL') private baseUrl: string
   ) { }
