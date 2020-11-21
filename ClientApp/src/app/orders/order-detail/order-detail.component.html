@@ -7,12 +7,15 @@
         </mat-form-field></td>
         <td><mat-form-field appearance="standard">
             <mat-label>Customer ID</mat-label>
-            <input matInput formControlName="customerId" type="number">
+            <input matInput formControlName="customerId">
         </mat-form-field></td>
         <td><mat-form-field appearance="standard">
             <mat-label>Product ID</mat-label>
-            <input matInput formControlName="productId" type="number">
+            <input matInput formControlName="productId">
         </mat-form-field></td>
+    </tr></table>
+
+    <table cellspacing="0"><tr>
         <td><mat-form-field appearance="fill">
             <mat-label>Employee ID</mat-label>
             <mat-select formControlName="employeeId" required>
@@ -21,9 +24,6 @@
               </mat-option>
             </mat-select>
         </mat-form-field></td>
-    </tr></table>
-
-    <table cellspacing="0"><tr>
         <td><mat-form-field appearance="standard">
             <mat-label>Time</mat-label>
                 <input matInput formControlName="time" type="datetime-local">

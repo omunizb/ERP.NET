@@ -1,7 +1,6 @@
 form {
     margin: auto;
-    width: 50%;
-    margin-top: 15px;
+    width: 70%;
 }
   
 table, .mat-form-field {
@@ -14,8 +13,6 @@ button {
 }
 
 .button-row {
-    margin-left: 240px;
-    margin-bottom: 50px;
-    margin-top: 50px;
-    width: 50%;
+    margin: auto;
+    width: 25%;
 }
