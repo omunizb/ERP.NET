@@ -8,13 +8,7 @@ table, .mat-form-field {
     padding-right: 8px;
 }
 
-button {
-    margin-right: 15px;
-}
-
 .button-row {
-    margin-left: 240px;
-    margin-bottom: 50px;
-    margin-top: 50px;
-    width: 50%;
+    padding-top: 30px;
+    text-align: center;
 }

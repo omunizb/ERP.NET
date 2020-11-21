@@ -1,6 +1,6 @@
 form {
     margin: auto;
-    width: 50%;
+    width: 70%;
 }
   
 table, .mat-form-field {
@@ -8,11 +8,6 @@ table, .mat-form-field {
     padding-right: 8px;
 }
 
-button {
-    margin-right: 15px;
-}
-
 .button-row {
-    margin-left: 240px;
-    width: 50%;
+    text-align: center;
 }
