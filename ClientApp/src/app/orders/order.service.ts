@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, BehaviorSubject, of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { Order } from '../models';
 import { MessageService } from '../messages/message.service';
@@ -10,7 +10,6 @@ import { MessageService } from '../messages/message.service';
 })
 export class OrderService {
   private ordersUrl = 'api/orders';
-  private ordersDataSource = new BehaviorSubject<Observable<Order[]>>(null);
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -31,9 +30,8 @@ export class OrderService {
   }
 
   getOrders(): Observable<Order[]> {
-    this.ordersDataSource.next(this.http.get<Order[]>(this.baseUrl + this.ordersUrl).pipe(
-      catchError(this.handleError<Order[]>('getOrders', []))));
-    return this.ordersDataSource.value;
+    return this.http.get<Order[]>(this.baseUrl + this.ordersUrl).pipe(
+      catchError(this.handleError<Order[]>('getOrders', [])));
   }
 
   getOrder(id: string): Observable<Order> {

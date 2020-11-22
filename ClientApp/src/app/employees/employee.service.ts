@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, BehaviorSubject, of, concat } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { Employee } from '../models';
 import { MessageService } from '../messages/message.service';
@@ -11,7 +11,6 @@ import { RolesService } from '../roles.service';
 })
 export class EmployeeService {
   private employeesUrl = 'api/employees';
-  private employeesDataSource: BehaviorSubject<Employee[] | null> = new BehaviorSubject(null);
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -33,10 +32,8 @@ export class EmployeeService {
   }
 
   getEmployees(): Observable<Employee[]> {
-    return concat(
-      this.http.get<Employee[]>(this.baseUrl + this.employeesUrl).pipe(
-        catchError(this.handleError<Employee[]>('getEmployees', [])), tap(e => this.employeesDataSource.next(e))),
-      this.employeesDataSource.asObservable());
+    return this.http.get<Employee[]>(this.baseUrl + this.employeesUrl).pipe(
+        catchError(this.handleError<Employee[]>('getEmployees', [])));
   }
 
   getEmployee(id: string): Observable<Employee> {

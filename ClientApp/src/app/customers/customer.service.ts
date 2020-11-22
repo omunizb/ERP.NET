@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, BehaviorSubject, of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { Customer } from '../models';
 import { MessageService } from '../messages/message.service';
@@ -10,7 +10,6 @@ import { MessageService } from '../messages/message.service';
 })
 export class CustomerService {
   private customersUrl = 'api/customers';
-  private customersDataSource = new BehaviorSubject<Observable<Customer[]>>(null);
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -31,9 +30,8 @@ export class CustomerService {
   }
 
   getCustomers(): Observable<Customer[]> {
-    this.customersDataSource.next(this.http.get<Customer[]>(this.baseUrl + this.customersUrl).pipe(
-      catchError(this.handleError<Customer[]>('getCustomers', []))));
-    return this.customersDataSource.value;
+    return this.http.get<Customer[]>(this.baseUrl + this.customersUrl).pipe(
+      catchError(this.handleError<Customer[]>('getCustomers', [])));
   }
 
   getCustomer(id: string): Observable<Customer> {

@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, BehaviorSubject, of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { Product } from '../models';
 import { MessageService } from '../messages/message.service';
@@ -10,7 +10,6 @@ import { MessageService } from '../messages/message.service';
 })
 export class ProductService {
   private stockUrl = 'api/products';
-  private stockDataSource = new BehaviorSubject<Observable<Product[]>>(null);
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -31,9 +30,8 @@ export class ProductService {
   }
 
   getStock(): Observable<Product[]> {
-    this.stockDataSource.next(this.http.get<Product[]>(this.baseUrl + this.stockUrl).pipe(
-      catchError(this.handleError<Product[]>('getStock', []))));
-    return this.stockDataSource.value;
+    return this.http.get<Product[]>(this.baseUrl + this.stockUrl).pipe(
+      catchError(this.handleError<Product[]>('getStock', [])));
   }
 
   getProduct(id: string): Observable<Product> {
