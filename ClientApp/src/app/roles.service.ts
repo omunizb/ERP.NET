@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { MessageService } from './messages/message.service';
+import { AuthorizeService } from '../api-authorization/authorize.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ export class RolesService {
 
   constructor(
     private messageService: MessageService,
+    private authorizeService: AuthorizeService,
     private http: HttpClient,
     @Inject('BASE_URL') private baseUrl: string
   ) { }
