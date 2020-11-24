@@ -1,15 +1,18 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { Observable, BehaviorSubject, of } from 'rxjs';
+import { catchError, tap, map } from 'rxjs/operators';
 import { Employee } from '../models';
 import { MessageService } from '../messages/message.service';
+import { AuthorizeService } from '../../api-authorization/authorize.service';
+import { RoleService } from '../role.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeService {
   private employeesUrl = 'api/employees';
+  public role: BehaviorSubject<string | null> = new BehaviorSubject(null);
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -17,6 +20,8 @@ export class EmployeeService {
 
   constructor(
     private messageService: MessageService,
+    private authorizeService: AuthorizeService,
+    private roleService: RoleService,
     private http: HttpClient,
     @Inject('BASE_URL') private baseUrl: string
   ) { }
@@ -59,5 +64,11 @@ export class EmployeeService {
     return this.http.post<Employee>(this.baseUrl + this.employeesUrl, employee, this.httpOptions).pipe(
       tap((newEmployee: Employee) => this.messageService.log(`Added employee with id=${newEmployee.id}.`)),
       catchError(this.handleError<Employee>('addEmployee')));
+  }
+
+  getRole() {
+    this.authorizeService.getUser().pipe(map(u => u && u.name)).subscribe(u => !!u ?
+      this.roleService.getRole(u).subscribe(r => this.role.next(r)) : this.role = null);
+    return this.role.asObservable();
   }
 }
