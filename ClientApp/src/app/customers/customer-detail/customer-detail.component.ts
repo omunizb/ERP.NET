@@ -13,6 +13,7 @@ import { CustomerService } from '../customer.service';
 })
 export class CustomerDetailComponent implements OnInit {
   customerForm;
+  role: string;
 
   constructor(
     private customerService: CustomerService,
@@ -38,6 +39,7 @@ export class CustomerDetailComponent implements OnInit {
     });
 
     this.getCustomer();
+    this.customerService.getRole().subscribe(r => this.role = r);
   }
 
   onSubmit(customerData) {

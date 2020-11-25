@@ -6,7 +6,7 @@
 
 <div class="table-responsive">
     <table mat-table [dataSource]="tableDataSrc" matSort class="mat-elevation-z8">
-        <ng-container *ngFor="let col of tableCols">
+        <ng-container *ngFor="let col of getTableCols()">
             <ng-container matColumnDef="{{ col }}">
                 <div *ngIf="col=='update'">
                     <th mat-header-cell *matHeaderCellDef></th>
@@ -39,8 +39,8 @@
             </ng-container>
         </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="tableCols"></tr>
-        <tr mat-row *matRowDef="let row; columns: tableCols"></tr>
+        <tr mat-header-row *matHeaderRowDef="getTableCols()"></tr>
+        <tr mat-row *matRowDef="let row; columns: getTableCols();"></tr>
     </table>
 </div>
 

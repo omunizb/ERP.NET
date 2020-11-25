@@ -1,15 +1,18 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { Observable, BehaviorSubject, of } from 'rxjs';
+import { catchError, tap, map } from 'rxjs/operators';
 import { Customer } from '../models';
 import { MessageService } from '../messages/message.service';
+import { AuthorizeService } from '../../api-authorization/authorize.service';
+import { RoleService } from '../role.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
   private customersUrl = 'api/customers';
+  public role: BehaviorSubject<string | null> = new BehaviorSubject(null);
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -17,6 +20,8 @@ export class CustomerService {
 
   constructor(
     private messageService: MessageService,
+    private authorizeService: AuthorizeService,
+    private roleService: RoleService,
     private http: HttpClient,
     @Inject('BASE_URL') private baseUrl: string
   ) { }
@@ -53,5 +58,11 @@ export class CustomerService {
     return this.http.put(url, customer, this.httpOptions).pipe(
       tap(_ => this.messageService.log(`Updated customer id=${customer.id}.`)),
       catchError(this.handleError<any>('updateCustomer')));
+  }
+
+  getRole() {
+    this.authorizeService.getUser().pipe(map(u => u && u.name)).subscribe(u => !!u ?
+      this.roleService.getRole(u).subscribe(r => this.role.next(r)) : this.role = null);
+    return this.role.asObservable();
   }
 }
