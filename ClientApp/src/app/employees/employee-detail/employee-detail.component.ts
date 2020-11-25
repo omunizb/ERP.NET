@@ -13,6 +13,7 @@ import { EmployeeService } from '../employee.service';
 })
 export class EmployeeDetailComponent implements OnInit {
   employeeForm;
+  role: string;
 
   constructor(
     private employeeService: EmployeeService,
@@ -37,6 +38,8 @@ export class EmployeeDetailComponent implements OnInit {
     if (this.route.snapshot.paramMap.get('id')) {
       this.getEmployee();
     }
+
+    this.employeeService.getRole().subscribe(r => this.role = r);
   }
 
   onSubmit(employeeData) {
