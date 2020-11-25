@@ -55,4 +55,8 @@ export class EmployeesListComponent implements OnInit {
     const searchTarget = ev.target.value;
     this.tableDataSrc.filter = searchTarget.trim().toLowerCase();
   }
+
+  getTableCols(): string[] {
+    return (this.role === 'Admin' ? this.tableCols : this.tableCols.filter(e => e !== 'salary'));
+  }
 }
