@@ -1,17 +1,20 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { Observable, BehaviorSubject, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { MessageService } from './messages/message.service';
+import { AuthorizeService } from '../api-authorization/authorize.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RoleService {
   private rolesUrl = 'api/roles';
+  public role: BehaviorSubject<string | null> = new BehaviorSubject(null);
 
   constructor(
     private messageService: MessageService,
+    private authorize: AuthorizeService,
     private http: HttpClient,
     @Inject('BASE_URL') private baseUrl: string
   ) { }
@@ -28,5 +31,11 @@ export class RoleService {
     const url = `${this.baseUrl + this.rolesUrl}/${username}`;
     return this.http.get(url, {responseType: 'text'}).pipe(
       catchError(this.handleError<string>(`getRole username=${username}`)));
+  }
+
+  provideRole() {
+    this.authorize.getUser().pipe(map(u => u && u.name)).subscribe(u => !!u ?
+      this.getRole(u).subscribe(r => this.role.next(r)) : this.role = null);
+    return this.role.asObservable();
   }
 }
