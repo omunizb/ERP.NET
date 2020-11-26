@@ -21,7 +21,8 @@ import { AuthorizeInterceptor } from './authorize.interceptor';
         { path: ApplicationPaths.LoginCallback, component: LoginComponent },
         { path: ApplicationPaths.LogOut, component: LogoutComponent },
         { path: ApplicationPaths.LoggedOut, component: LogoutComponent },
-        { path: ApplicationPaths.LogOutCallback, component: LogoutComponent }
+        { path: ApplicationPaths.LogOutCallback, component: LogoutComponent },
+        { path: '**', redirectTo: '/', pathMatch: 'full' }
       ]
     )
   ],

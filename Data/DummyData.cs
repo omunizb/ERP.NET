@@ -51,7 +51,7 @@ namespace ERPProject.Data
                     Id = IDs[0, 0],
                     Name="Earbuds 100X",
                     Category="Electronics",
-                    Description = "The best earbuds in the market!",
+                    Description = "The best earbuds on the market!",
                     CurrentPrice = 17.99,
                     Stock = 4500,
                     Purchases = 102

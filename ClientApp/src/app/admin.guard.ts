@@ -8,29 +8,18 @@ import { RoleService } from './role.service';
   providedIn: 'root'
 })
 export class AdminGuard implements CanActivate {
-  role: string;
-
-  constructor(
-    private roleService: RoleService,
-    private router: Router
-  ) { }
+  constructor(private roleService: RoleService, private router: Router) {
+  }
   canActivate(
     _next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    this.roleService.provideRole().subscribe(r => this.role = r);
-    return this.isAdmin().pipe(tap(isAdmin => this.handleAuthorization(isAdmin, state)))
+    return this.roleService.isAdmin().pipe(tap(isAdmin => this.handleAuthorization(isAdmin, state)))
   }
 
   private handleAuthorization(isAdmin: boolean | UrlTree, state: RouterStateSnapshot) {
     if (!isAdmin) {
-      this.router.navigateByUrl(state.url.split('/')[1]);
+      var urlArray = state.url.split('/');
+      this.router.navigateByUrl(urlArray[urlArray.length - 2]);
     }
   }
-
-  private isAdmin(): Observable<boolean> {
-    if (this.role !== 'Admin') {
-      return of(false);
-    }
-    return of(true);
-  } 
 }
