@@ -1,0 +1,39 @@
+import { Injectable } from '@angular/core';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
+import { Observable, of } from 'rxjs';
+import { tap, map } from 'rxjs/operators';
+import { AuthorizeService } from '../api-authorization/authorize.service';
+import { RoleService } from './role.service';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AdminGuard implements CanActivate {
+  role: string;
+
+  constructor(
+    private roleService: RoleService,
+    private authorize: AuthorizeService,
+    private router: Router
+  ) { }
+  canActivate(
+    _next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    this.authorize.getUser().pipe(map(u => u && u.name)).subscribe(u =>
+      this.roleService.getRole(u).subscribe(r => this.role = r));
+    return this.isAdmin().pipe(tap(isAdmin => this.handleAuthorization(isAdmin, state)))
+  }
+
+  private handleAuthorization(isAdmin: boolean | UrlTree, state: RouterStateSnapshot) {
+    if (!isAdmin) {
+      this.router.navigateByUrl(state.url.split('/')[1]);
+    }
+  }
+
+  private isAdmin(): Observable<boolean> {
+    if (this.role !== 'Admin') {
+      return of(false);
+    }
+    return of(true);
+  } 
+}

@@ -57,6 +57,6 @@ export class EmployeesListComponent implements OnInit {
   }
 
   getTableCols(): string[] {
-    return (this.role === 'Admin' ? this.tableCols : this.tableCols.filter(e => e !== 'salary'));
+    return (this.role === 'Admin' ? this.tableCols : this.tableCols.filter(e => e !== 'salary' && e !== 'update'));
   }
 }
