@@ -14,7 +14,7 @@ import { MatPaginator } from '@angular/material/paginator';
 })
 export class EmployeesListComponent implements OnInit {
   title = 'Employees';
-  role: string;
+  isAdmin: boolean;
   tableDataSrc = new MatTableDataSource();
   tableCols: string[] = [
     'id', 
@@ -38,7 +38,7 @@ export class EmployeesListComponent implements OnInit {
     this.getEmployees();
     this.tableDataSrc.sort = this.sort;
     this.tableDataSrc.paginator = this.paginator;
-    this.employeeService.getRole().subscribe(r => this.role = r);
+    this.employeeService.getRole().subscribe(r => this.isAdmin = r);
   }
 
   getEmployees(): void {
@@ -57,6 +57,6 @@ export class EmployeesListComponent implements OnInit {
   }
 
   getTableCols(): string[] {
-    return (this.role === 'Admin' ? this.tableCols : this.tableCols.filter(e => e !== 'salary' && e !== 'update'));
+    return (this.isAdmin ? this.tableCols : this.tableCols.filter(e => e !== 'salary' && e !== 'update'));
   }
 }

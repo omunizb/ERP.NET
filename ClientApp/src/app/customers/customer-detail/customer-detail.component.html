@@ -48,7 +48,7 @@
         </mat-form-field></td>
     </tr></table>
 
-    <table cellspacing="0" *ngIf="role === 'Admin'"><tr>
+    <table cellspacing="0" *ngIf="isAdmin"><tr>
         <td><mat-form-field appearance="standard">
             <mat-label>Total expenditure</mat-label>
             <input matInput formControlName="totalExpenditure" type="number" step="0.01">

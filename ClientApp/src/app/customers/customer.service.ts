@@ -58,6 +58,6 @@ export class CustomerService {
   }
 
   getRole() {
-    return this.roleService.provideRole();
+    return this.roleService.isAdmin();
   }
 }

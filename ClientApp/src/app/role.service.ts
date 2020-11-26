@@ -33,9 +33,13 @@ export class RoleService {
       catchError(this.handleError<string>(`getRole username=${username}`)));
   }
 
-  provideRole() {
+  provideRole(): Observable<string> {
     this.authorize.getUser().pipe(map(u => u && u.name)).subscribe(u => !!u ?
       this.getRole(u).subscribe(r => this.role.next(r)) : this.role = null);
     return this.role.asObservable();
+  }
+
+  isAdmin(): Observable<boolean> {
+    return this.provideRole().pipe(map(r => r === 'Admin'));
   }
 }

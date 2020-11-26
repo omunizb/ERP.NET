@@ -13,7 +13,7 @@ import { EmployeeService } from '../employee.service';
 })
 export class EmployeeDetailComponent implements OnInit {
   employeeForm;
-  role: string;
+  isAdmin: boolean;
 
   constructor(
     private employeeService: EmployeeService,
@@ -39,7 +39,7 @@ export class EmployeeDetailComponent implements OnInit {
       this.getEmployee();
     }
 
-    this.employeeService.getRole().subscribe(r => this.role = r);
+    this.employeeService.getRole().subscribe(r => this.isAdmin = r);
   }
 
   onSubmit(employeeData) {

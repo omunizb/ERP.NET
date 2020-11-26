@@ -5,7 +5,7 @@
         <mat-icon matPrefix>search</mat-icon>
     </mat-form-field>
 
-    <a mat-raised-button color="primary" routerLink="/employees/detail" *ngIf="role === 'Admin'">New employee</a>
+    <a mat-raised-button color="primary" routerLink="/employees/detail" *ngIf="isAdmin">New employee</a>
 </div>
 
 <div class="table-responsive">

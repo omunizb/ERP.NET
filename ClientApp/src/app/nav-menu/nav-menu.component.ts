@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthorizeService } from '../../api-authorization/authorize.service';
 import { RoleService } from '../role.service';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-nav-menu',
@@ -10,7 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class NavMenuComponent implements OnInit {
   public isAuthenticated: Observable<boolean>;
-  public role: string;
+  public isAdmin: boolean;
 
   constructor(
     private authorizeService: AuthorizeService,
@@ -19,6 +20,7 @@ export class NavMenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.isAuthenticated = this.authorizeService.isAuthenticated();
-    this.roleService.provideRole().subscribe(r => this.role = r);
+    this.authorizeService.getUser().pipe(map(u => u && u.name)).subscribe(u => !!u ?
+      this.roleService.getRole(u).subscribe(r => this.isAdmin = r === 'Admin') : this.isAdmin = false);
   }
 }
