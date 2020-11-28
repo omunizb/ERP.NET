@@ -7,7 +7,7 @@ namespace ERPProject.Models
         public Guid Id { get; set; }
         public Guid CustomerId { get; set; }
         public Guid ProductId { get; set; }
-        public Guid EmployeeId { get; set; }
+        public Guid? EmployeeId { get; set; }
         public DateTime Time { get; set; }
         public int Quantity { get; set; }
         public double Price { get; set; }
@@ -17,8 +17,8 @@ namespace ERPProject.Models
         public DateTime ExpectedDelivery { get; set; }
         public DateTime Delivered { get; set; }
 
-        public virtual Customer Customer { get; set; }
-        public virtual Product Product { get; set; }
-        public virtual Employee Employee { get; set; }
+        public Customer Customer { get; set; }
+        public Product Product { get; set; }
+        public Employee Employee { get; set; }
     }
 }

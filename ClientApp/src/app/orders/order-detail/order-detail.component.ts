@@ -17,6 +17,7 @@ export class OrderDetailComponent implements OnInit {
   orderForm;
   employees: Employee[] = [];
   priorities: number[] = [ 1, 2, 3 ];
+  isAdmin: boolean;
 
   constructor(
     private orderService: OrderService,
@@ -43,6 +44,7 @@ export class OrderDetailComponent implements OnInit {
       delivered: [{ value: '', disabled: true }]
     });
 
+    this.employeeService.getRole().subscribe(r => this.isAdmin = r);
     this.getEmployees();
     this.getOrder();
   }
