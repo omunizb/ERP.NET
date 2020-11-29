@@ -17,7 +17,7 @@ namespace ERPProject.Data
             { Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid() },
             { Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid() }
         };
-        public static void Initialize(IApplicationBuilder app)
+        public  static async Task Initialize(IApplicationBuilder app, IServiceProvider serviceProvider)
         {
             using var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope();
             var context = serviceScope.ServiceProvider.GetService<ERPContext>();
@@ -31,13 +31,11 @@ namespace ERPProject.Data
             context.Products.AddRange(products);
             context.SaveChanges();
 
-            var employees = GetEmployees().ToArray();
-            context.Employees.AddRange(employees);
-            context.SaveChanges();
-
             var customers = GetCustomers().ToArray();
             context.Customers.AddRange(customers);
             context.SaveChanges();
+
+            await GetUsers(serviceProvider);
 
             var orders = GetOrders().ToArray();
             context.Orders.AddRange(orders);
@@ -90,40 +88,6 @@ namespace ERPProject.Data
                     Purchases = 2809 }
             };
             return products;
-        }
-
-        public static List<Employee> GetEmployees()
-        {
-            List<Employee> employees = new List<Employee>() {
-                new Employee {
-                    Id = IDs[1, 0],
-                    Name = "Mikaela",
-                    Surname = "Gomis",
-                    Email = "mikaelagomis@ittaca.com",
-                    Hired = new DateTime(2018, 9, 15),
-                    Salary = 31560.56,
-                    Position = "Attendant"
-                },
-                new Employee {
-                    Id = IDs[1, 1],
-                    Name = "Kevin",
-                    Surname = "Garcia",
-                    Email = "kevingarcia@ittaca.com",
-                    Hired = new DateTime(2015, 5, 23),
-                    Salary = 31560.56,
-                    Position = "Attendant"
-                },
-                new Employee {
-                    Id = IDs[1, 2],
-                    Name = "Joan",
-                    Surname = "Cot",
-                    Email = "joancot@ittaca.com",
-                    Hired = new DateTime(2019, 10, 5),
-                    Salary = 63810.13,
-                    Position = "Manager"
-                }
-            };
-            return employees;
         }
 
         public static List<Customer> GetCustomers()
@@ -222,8 +186,8 @@ namespace ERPProject.Data
             using var serviceScope = serviceProvider.GetService<IServiceScopeFactory>().CreateScope();
             var context = serviceScope.ServiceProvider.GetService<ERPContext>();
             context.Database.EnsureCreated();
-            var userManager = serviceProvider.GetService<UserManager<User>>();
-            var roleManager = serviceProvider.GetService<RoleManager<IdentityRole>>();
+            var userManager = serviceProvider.GetService<UserManager<Employee>>();
+            var roleManager = serviceProvider.GetService<RoleManager<ApplicationRole>>();
 
             if (!context.Users.Any())
             {
@@ -232,27 +196,54 @@ namespace ERPProject.Data
                 {
                     if (!await roleManager.RoleExistsAsync(role))
                     {
-                        await roleManager.CreateAsync(new IdentityRole(role));
+                        await roleManager.CreateAsync(new ApplicationRole(role));
                     }
                 }
 
-                List<User> users = new List<User>() {
-                    new User {
-                        UserName = "Admin",
-                        Email = "admin@example.com",
-                        EmailConfirmed = true
-                    },
-                    new User {
+                List<Employee> users = new List<Employee>() {
+                    new Employee {
+                        Id = IDs[1, 0],
                         UserName = "Employee",
-                        Email = "employee@example.com",
-                        EmailConfirmed = true
-                    }
+                        EmailConfirmed = true,
+                        Name = "Mikaela",
+                        Surname = "Gomis",
+                        Email = "mikaelagomis@ittaca.com",
+                        Hired = new DateTime(2018, 9, 15),
+                        Salary = 31560.56,
+                        Position = "Attendant"
+                    },
+                    new Employee {
+                        Id = IDs[1, 1],
+                        UserName = "kevingarcia@ittaca.com",
+                        EmailConfirmed = true,
+                        Name = "Kevin",
+                        Surname = "Garcia",
+                        Email = "kevingarcia@ittaca.com",
+                        Hired = new DateTime(2015, 5, 23),
+                        Salary = 31560.56,
+                        Position = "Attendant"
+                    },
+                    new Employee {
+                        Id = IDs[1, 2],
+                        UserName = "Admin",
+                        EmailConfirmed = true,
+                        Name = "Joan",
+                        Surname = "Cot",
+                        Email = "joancot@ittaca.com",
+                        Hired = new DateTime(2019, 10, 5),
+                        Salary = 63810.13,
+                        Position = "Manager"
+                    },
                 };
 
-                foreach (User user in users)
+                foreach (Employee user in users)
                 {
                     await userManager.CreateAsync(user, "Pass123$");
-                    await userManager.AddToRoleAsync(user, user.UserName);
+
+                    if (user.Position == "Manager")
+                        await userManager.AddToRoleAsync(user, "Admin");
+                    else
+                        await userManager.AddToRoleAsync(user, "Employee");
                 }
                 context.SaveChanges();
             }

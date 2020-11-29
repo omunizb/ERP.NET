@@ -1,11 +1,7 @@
 ﻿using ERPProject.Data;
 using ERPProject.Models;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -15,9 +11,9 @@ namespace ERPProject.Controllers
     [ApiController]
     public class RolesController : ControllerBase
     {
-        private UserManager<User> _userManager;
+        private UserManager<Employee> _userManager;
 
-        public RolesController(UserManager<User> userManager, ERPContext context)
+        public RolesController(UserManager<Employee> userManager)
         {
             _userManager = userManager;
         }

@@ -31,12 +31,12 @@ namespace ERPProject
             services.AddDbContext<ERPContext>(opt =>
                opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddRoles<IdentityRole>()
+            services.AddDefaultIdentity<Employee>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<ApplicationRole>()
                 .AddEntityFrameworkStores<ERPContext>();
 
             services.AddIdentityServer()
-                .AddApiAuthorization<User, ERPContext>();
+                .AddApiAuthorization<Employee, ERPContext>();
 
             services.AddAuthentication()
                 .AddIdentityServerJwt();
@@ -112,8 +112,7 @@ namespace ERPProject
                 }
             });
 
-            DummyData.Initialize(app);
-            DummyData.GetUsers(serviceProvider).Wait();
+            DummyData.Initialize(app, serviceProvider).Wait();
         }
     }
 }
