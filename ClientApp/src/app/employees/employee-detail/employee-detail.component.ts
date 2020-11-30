@@ -5,6 +5,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { tap } from 'rxjs/operators';
 
 import { EmployeeService } from '../employee.service';
+import { Employee } from 'src/app/models';
 
 @Component({
   selector: 'app-employee-detail',
@@ -14,6 +15,7 @@ import { EmployeeService } from '../employee.service';
 export class EmployeeDetailComponent implements OnInit {
   employeeForm;
   isAdmin: boolean;
+  currentEmployee: Employee;
 
   constructor(
     private employeeService: EmployeeService,
@@ -44,7 +46,8 @@ export class EmployeeDetailComponent implements OnInit {
 
   onSubmit(employeeData) {
     if (this.route.snapshot.paramMap.get('id')) {
-      this.employeeService.updateEmployee(employeeData).subscribe();
+      let updatedEmployee = {...this.currentEmployee, ...employeeData}
+      this.employeeService.updateEmployee(updatedEmployee).subscribe();
     }
     else {
       delete employeeData.id;
@@ -59,7 +62,7 @@ export class EmployeeDetailComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.employeeService.getEmployee(id)
       .pipe(tap(employee => this.employeeForm.patchValue(employee)))
-      .subscribe();
+      .subscribe(employee => this.currentEmployee = employee);
   }
 
   goBack(): void {
