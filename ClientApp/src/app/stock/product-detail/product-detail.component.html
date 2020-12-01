@@ -1,42 +1,48 @@
 <form [formGroup]="productForm" (ngSubmit)="onSubmit(productForm.getRawValue())">
 
-    <table cellspacing="0"><tr>
-        <td><mat-form-field appearance="standard">
-            <mat-label>ID</mat-label>
-            <input matInput formControlName="id">
-        </mat-form-field></td>
-        <td><mat-form-field appearance="standard">
-            <mat-label>Category</mat-label>
-            <input matInput formControlName="category" maxlength="100">
-        </mat-form-field></td>
-    </tr></table>
+    <div class="form-responsive">
 
-    <mat-form-field appearance="standard">
-        <mat-label>Name</mat-label>
-        <input matInput formControlName="name" maxlength="200" required>
-    </mat-form-field>
+        <table cellspacing="0"><tr>
+            <td><mat-form-field appearance="standard">
+                <mat-label>ID</mat-label>
+                <input matInput formControlName="id">
+            </mat-form-field></td>
+            <td><mat-form-field appearance="standard">
+                <mat-label>Category</mat-label>
+                <input matInput formControlName="category" maxlength="100">
+            </mat-form-field></td>
+        </tr></table>
 
-    <mat-form-field appearance="standard">
-        <mat-label>Description</mat-label>
-        <textarea matInput #description formControlName="description" maxlength="2000" cdkTextareaAutosize></textarea>
-        <mat-hint align="end">{{description.value?.length || 0}}/2000</mat-hint>
-    </mat-form-field>
+        <table cellspacing="0"><tr>
+            <td><mat-form-field appearance="standard">
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="name" maxlength="200" required>
+            </mat-form-field></td>
+            <td><mat-form-field appearance="standard">
+                <mat-label>Price</mat-label>
+                <input matInput formControlName="currentPrice" type="number" min="0" step="0.01" required>
+                <span matPrefix>$&nbsp;</span>
+            </mat-form-field></td>
+        </tr></table>
 
-    <table cellspacing="0"><tr>
-        <td><mat-form-field appearance="standard">
-            <mat-label>Price</mat-label>
-            <input matInput formControlName="currentPrice" type="number" min="0" step="0.01" required>
-            <span matPrefix>$&nbsp;</span>
-        </mat-form-field></td>
-        <td><mat-form-field appearance="standard">
-            <mat-label>Stock</mat-label>
-            <input matInput formControlName="stock" type="number" min="0" max="99999999">
-        </mat-form-field></td>
-        <td><mat-form-field appearance="standard">
-            <mat-label>Purchases</mat-label>
-            <input matInput formControlName="purchases" type="number">
-        </mat-form-field></td>
-    </tr></table>
+        <mat-form-field appearance="standard">
+            <mat-label>Description</mat-label>
+            <textarea matInput #description formControlName="description" maxlength="2000" cdkTextareaAutosize></textarea>
+            <mat-hint align="end">{{description.value?.length || 0}}/2000</mat-hint>
+        </mat-form-field>
+
+        <table cellspacing="0"><tr>
+            <td><mat-form-field appearance="standard">
+                <mat-label>Stock</mat-label>
+                <input matInput formControlName="stock" type="number" min="0" max="99999999">
+            </mat-form-field></td>
+            <td><mat-form-field appearance="standard">
+                <mat-label>Purchases</mat-label>
+                <input matInput formControlName="purchases" type="number">
+            </mat-form-field></td>
+        </tr></table>
+
+    </div>
 
     <div class="button-row">
         <button mat-flat-button color="accent" type="submit" [disabled]="!productForm.valid" style="margin-right: 15px;">Save</button>

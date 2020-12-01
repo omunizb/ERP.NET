@@ -1,78 +1,85 @@
 <form [formGroup]="orderForm" (ngSubmit)="onSubmit(orderForm.getRawValue())">
 
-    <table cellspacing="0"><tr>
-        <td><mat-form-field appearance="standard">
-            <mat-label>ID</mat-label>
-            <input matInput formControlName="id">
-        </mat-form-field></td>
-        <td><mat-form-field appearance="standard">
-            <mat-label>Customer ID</mat-label>
-            <input matInput formControlName="customerId">
-        </mat-form-field></td>
-        <td><mat-form-field appearance="standard">
-            <mat-label>Product ID</mat-label>
-            <input matInput formControlName="productId">
-        </mat-form-field></td>
-    </tr></table>
+    <div class="form-responsive">
 
-    <table cellspacing="0"><tr>
-        <td><mat-form-field appearance="fill">
-            <mat-label>Employee ID</mat-label>
-            <mat-select formControlName="employeeId">
-              <mat-option *ngFor="let employee of employees" [value]="employee.id">
-                {{ employee.id }}
-              </mat-option>
-              <!--<mat-option [ngValue]="null">Unassigned</mat-option>-->
-            </mat-select>
-        </mat-form-field></td>
-        <td><mat-form-field appearance="standard">
-            <mat-label>Time</mat-label>
-                <input matInput formControlName="time" type="datetime-local">
-        </mat-form-field></td>
-        <td><mat-form-field appearance="standard">
-            <mat-label>Quantity</mat-label>
-                <input matInput formControlName="quantity" type="number">
-        </mat-form-field></td>
-    </tr></table>
+        <table cellspacing="0"><tr>
+            <td><mat-form-field appearance="standard">
+                <mat-label>ID</mat-label>
+                <input matInput formControlName="id">
+            </mat-form-field></td>
+            <td><mat-form-field appearance="standard">
+                <mat-label>Time</mat-label>
+                    <input matInput formControlName="time" type="datetime-local">
+            </mat-form-field></td>
+        </tr></table>
 
-    <table cellspacing="0"><tr>
-        <td><mat-form-field appearance="standard">
-            <mat-label>Price</mat-label>
-            <input matInput formControlName="price" type="number" step="0.01">
-            <span matPrefix>$&nbsp;</span>
-        </mat-form-field></td>
-        <td><mat-form-field appearance="standard">
-            <mat-label>VAT Inclusive Price</mat-label>
-            <input matInput formControlName="priceVAT" type="number" step="0.01">
-            <span matPrefix>$&nbsp;</span>
-        </mat-form-field></td>
-    </tr></table>
-
-    <table cellspacing="0"><tr>
-        <td><mat-form-field appearance="standard">
-            <mat-label>State</mat-label>
-            <input matInput formControlName="state">
-        </mat-form-field></td>
-        <td><mat-form-field appearance="fill">
-            <mat-label>Priority</mat-label>
-            <mat-select formControlName="priority" required>
-                <mat-option *ngFor="let priority of priorities" [value]="priority">
-                    {{ priority }}
+        <table cellspacing="0"><tr>
+            <td><mat-form-field appearance="standard">
+                <mat-label>Customer ID</mat-label>
+                <input matInput formControlName="customerId">
+            </mat-form-field></td>
+            <td><mat-form-field appearance="fill">
+                <mat-label>Employee ID</mat-label>
+                <mat-select formControlName="employeeId">
+                <mat-option *ngFor="let employee of employees" [value]="employee.id">
+                    {{ employee.id }}
                 </mat-option>
-            </mat-select>
-        </mat-form-field></td>
-    </tr></table>
+                <!--<mat-option [ngValue]="null">Unassigned</mat-option>-->
+                </mat-select>
+            </mat-form-field></td>
+        </tr></table>
 
-    <table cellspacing="0"><tr>
-        <td><mat-form-field appearance="standard">
-            <mat-label>Expected Day of Delivery</mat-label>
-            <input matInput formControlName="expectedDelivery" type="datetime-local">
-        </mat-form-field></td>
-        <td><mat-form-field appearance="standard">
-            <mat-label>Delivered</mat-label>
-            <input matInput formControlName="delivered" type="datetime-local">
-        </mat-form-field></td>
-    </tr></table>
+        <table cellspacing="0"><tr>
+            <td><mat-form-field appearance="standard">
+                <mat-label>Product ID</mat-label>
+                <input matInput formControlName="productId">
+            </mat-form-field></td>
+            <td><mat-form-field appearance="standard">
+                <mat-label>Quantity</mat-label>
+                    <input matInput formControlName="quantity" type="number">
+            </mat-form-field></td>
+        </tr></table>
+
+        <table cellspacing="0"><tr>
+            <td><mat-form-field appearance="standard">
+                <mat-label>Price</mat-label>
+                <input matInput formControlName="price" type="number" step="0.01">
+                <span matPrefix>$&nbsp;</span>
+            </mat-form-field></td>
+            <td><mat-form-field appearance="standard">
+                <mat-label>VAT Inclusive Price</mat-label>
+                <input matInput formControlName="priceVAT" type="number" step="0.01">
+                <span matPrefix>$&nbsp;</span>
+            </mat-form-field></td>
+        </tr></table>
+
+        <table cellspacing="0"><tr>
+            <td><mat-form-field appearance="standard">
+                <mat-label>State</mat-label>
+                <input matInput formControlName="state">
+            </mat-form-field></td>
+            <td><mat-form-field appearance="fill">
+                <mat-label>Priority</mat-label>
+                <mat-select formControlName="priority" required>
+                    <mat-option *ngFor="let priority of priorities" [value]="priority">
+                        {{ priority }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field></td>
+        </tr></table>
+
+        <table cellspacing="0"><tr>
+            <td><mat-form-field appearance="standard">
+                <mat-label>Expected Day of Delivery</mat-label>
+                <input matInput formControlName="expectedDelivery" type="datetime-local">
+            </mat-form-field></td>
+            <td><mat-form-field appearance="standard">
+                <mat-label>Delivered</mat-label>
+                <input matInput formControlName="delivered" type="datetime-local">
+            </mat-form-field></td>
+        </tr></table>
+
+    </div>
 
     <div class="button-row">
         <button mat-flat-button color="accent" type="submit" [disabled]="!orderForm.valid" style="margin-right: 15px;">Save</button>

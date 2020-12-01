@@ -1,6 +1,10 @@
+.form-responsive {
+    overflow-x: auto;
+}
+
 form {
     margin: auto;
-    width: 70%;
+    width: 80%;
 }
   
 table, .mat-form-field {
@@ -10,4 +14,6 @@ table, .mat-form-field {
 
 .button-row {
     text-align: center;
+    padding-top: 25px;
+    padding-bottom: 50px;
 }
