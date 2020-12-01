@@ -10,17 +10,16 @@ using System.Threading.Tasks;
 // Adapted from https://github.com/medhatelmasry/HealthAPI/blob/master/HealthAPI/Data/DummyData.cs
 namespace ERPProject.Data
 {
-    public class DummyData
+    public class DbInitializer
     {
         static readonly Guid[,] IDs = new Guid[3, 3] {
             { Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid() },
             { Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid() },
             { Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid() }
         };
-        public  static async Task Initialize(IApplicationBuilder app, IServiceProvider serviceProvider)
+        public  static async Task Initialize(IServiceProvider serviceProvider)
         {
-            using var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope();
-            var context = serviceScope.ServiceProvider.GetService<ERPContext>();
+            var context = serviceProvider.GetService<ERPContext>();
             context.Database.EnsureCreated();
 
             // Look for any products

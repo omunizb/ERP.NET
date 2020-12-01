@@ -111,8 +111,6 @@ namespace ERPProject
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });
-
-            DummyData.Initialize(app, serviceProvider).Wait();
         }
     }
 }
