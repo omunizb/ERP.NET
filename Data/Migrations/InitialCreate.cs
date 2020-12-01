@@ -29,7 +29,7 @@ namespace ERPProject.Data.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Surname = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Hired = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Departed = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Departed = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Salary = table.Column<double>(type: "float", nullable: false),
                     Position = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),

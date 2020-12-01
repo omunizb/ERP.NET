@@ -46,13 +46,16 @@ export class EmployeeDetailComponent implements OnInit {
 
   onSubmit(employeeData) {
     if (this.route.snapshot.paramMap.get('id')) {
-      let updatedEmployee = {...this.currentEmployee, ...employeeData}
+
+      // Merge employeeData (form changes) with currentEmployee to get updatedEmployee 
+      let updatedEmployee = {...this.currentEmployee, ...employeeData};
+
       this.employeeService.updateEmployee(updatedEmployee).subscribe();
     }
     else {
       delete employeeData.id;
       employeeData.hired = new Date();
-      employeeData.departed = new Date('0001');
+      employeeData.departed = null;
       this.employeeService.addEmployee(employeeData).subscribe();
     }
     this.router.navigate(['/employees']);

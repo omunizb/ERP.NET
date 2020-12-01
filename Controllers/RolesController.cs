@@ -1,7 +1,7 @@
-﻿using ERPProject.Data;
-using ERPProject.Models;
+﻿using ERPProject.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -11,7 +11,7 @@ namespace ERPProject.Controllers
     [ApiController]
     public class RolesController : ControllerBase
     {
-        private UserManager<Employee> _userManager;
+        private readonly UserManager<Employee> _userManager;
 
         public RolesController(UserManager<Employee> userManager)
         {
@@ -31,6 +31,19 @@ namespace ERPProject.Controllers
             var roleList = await _userManager.GetRolesAsync(user);
             string role = roleList.FirstOrDefault();
             return await Task.FromResult(role);
+        }
+
+        [HttpGet("{username}/[action]")]
+        public async Task<ActionResult<string>> GetId(string username)
+        {
+            var user = await _userManager.FindByNameAsync(username);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return await Task.FromResult(user.Id.ToString());
         }
     }
 }

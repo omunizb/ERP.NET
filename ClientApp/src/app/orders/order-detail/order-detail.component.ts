@@ -6,7 +6,7 @@ import { tap } from 'rxjs/operators';
 
 import { OrderService } from '../order.service';
 import { EmployeeService } from '../../employees/employee.service';
-import { Employee } from '../../models';
+import { Employee, Order } from '../../models';
 
 @Component({
   selector: 'app-order-detail',
@@ -18,6 +18,7 @@ export class OrderDetailComponent implements OnInit {
   employees: Employee[] = [];
   priorities: number[] = [ 1, 2, 3 ];
   isAdmin: boolean;
+  userId: string;
 
   constructor(
     private orderService: OrderService,
@@ -33,7 +34,7 @@ export class OrderDetailComponent implements OnInit {
       id: [{ value: '', disabled: true }],
       customerId: [{ value: '', disabled: true }],
       productId: [{ value: '', disabled: true }],
-      employeeId: ['', Validators.required],
+      employeeId: [''],
       time: [{ value: '', disabled: true }],
       quantity: [{ value: '', disabled: true }],
       price: [{ value: '', disabled: true }],
@@ -45,8 +46,9 @@ export class OrderDetailComponent implements OnInit {
     });
 
     this.employeeService.getRole().subscribe(r => this.isAdmin = r);
-    this.getEmployees();
+    this.employeeService.getId().subscribe(r => this.userId = r);
     this.getOrder();
+    this.getEmployees();
   }
 
   onSubmit(orderData) {
@@ -63,15 +65,24 @@ export class OrderDetailComponent implements OnInit {
 
   getEmployees(): void {
     this.employeeService.getEmployees()
-        .subscribe(employees => this.employees = employees as Employee[]);
+        .subscribe(employees => this.employees = roleRestriction(discardOldEmployees(employees)));
     
     // Filter out former employees
-    const activeEmployeeDate: Date = new Date('0001');
-    this.employees.forEach(employee => {
-      if (employee.departed !== activeEmployeeDate) {
-        this.employees.splice(this.employees.indexOf(employee), 1);
+    let discardOldEmployees = (employees: Employee[]): Employee[] => {
+      employees.forEach(employee => {
+        if (employee.departed !== null) {
+          employees.splice(employees.indexOf(employee), 1);
+        }
+      });
+      return employees;
+    }
+
+    let roleRestriction = (employees: Employee[]): Employee[] => {
+      if (!this.isAdmin) {
+        employees = employees.filter(x => x.id == this.userId);
       }
-    });
+      return employees;
+    }
   }
 
   goBack(): void {

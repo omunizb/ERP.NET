@@ -66,4 +66,8 @@ export class EmployeeService {
   getRole() {
     return this.roleService.isAdmin();
   }
+
+  getId() {
+    return this.roleService.provideId();
+  }
 }

@@ -101,7 +101,7 @@ namespace ERPProject.Data.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("Departed")
+                    b.Property<DateTime?>("Departed")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")

@@ -18,10 +18,11 @@
     <table cellspacing="0"><tr>
         <td><mat-form-field appearance="fill">
             <mat-label>Employee ID</mat-label>
-            <mat-select formControlName="employeeId" required>
+            <mat-select formControlName="employeeId">
               <mat-option *ngFor="let employee of employees" [value]="employee.id">
                 {{ employee.id }}
               </mat-option>
+              <!--<mat-option [ngValue]="null">Unassigned</mat-option>-->
             </mat-select>
         </mat-form-field></td>
         <td><mat-form-field appearance="standard">

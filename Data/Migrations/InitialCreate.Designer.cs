@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ERPProject.Data.Migrations
 {
     [DbContext(typeof(ERPContext))]
-    [Migration("20201129191143_InitialCreate")]
+    [Migration("20201201011955_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -103,7 +103,7 @@ namespace ERPProject.Data.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("Departed")
+                    b.Property<DateTime?>("Departed")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")

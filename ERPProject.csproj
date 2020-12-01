@@ -34,9 +34,5 @@
     <None Include="Pages\_ViewImports.cshtml" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Data\Migrations\" />
-  </ItemGroup>
-
 
 </Project>

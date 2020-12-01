@@ -48,9 +48,9 @@ export interface Employee {
 
 export interface Order {
     id: string;
-    customerId: number;
-    productId: number;   
-    employeeId: number;  
+    customerId: string;
+    productId: string;   
+    employeeId: string;
     time: Date;  
     quantity: number;
     price: number;

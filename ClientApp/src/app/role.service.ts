@@ -11,6 +11,7 @@ import { AuthorizeService } from '../api-authorization/authorize.service';
 export class RoleService {
   private rolesUrl = 'api/roles';
   public role: BehaviorSubject<string | null> = new BehaviorSubject(null);
+  public id: BehaviorSubject<string | null> = new BehaviorSubject(null);
 
   constructor(
     private messageService: MessageService,
@@ -41,5 +42,17 @@ export class RoleService {
 
   isAdmin(): Observable<boolean> {
     return this.provideRole().pipe(map(r => r === 'Admin'));
+  }
+
+  getId(username: string): Observable<string> {
+    const url = `${this.baseUrl + this.rolesUrl}/${username}/getid`;
+    return this.http.get(url, {responseType: 'text'}).pipe(
+      catchError(this.handleError<string>(`getRole username=${username}`)));
+  }
+
+  provideId(): Observable<string> {
+    this.authorize.getUser().pipe(map(u => u && u.name)).subscribe(u => !!u ?
+      this.getId(u).subscribe(i => this.id.next(i)) : this.id = null);
+    return this.id.asObservable();
   }
 }
