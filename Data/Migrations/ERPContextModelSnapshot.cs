@@ -181,7 +181,7 @@ namespace ERPProject.Data.Migrations
                     b.Property<Guid>("CustomerId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("Delivered")
+                    b.Property<DateTime?>("Delivered")
                         .HasColumnType("datetime2");
 
                     b.Property<Guid?>("EmployeeId")

@@ -250,7 +250,7 @@ namespace ERPProject.Data.Migrations
                     State = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Priority = table.Column<int>(type: "int", nullable: false),
                     ExpectedDelivery = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Delivered = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Delivered = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {

@@ -15,7 +15,7 @@ namespace ERPProject.Models
         public string State { get; set; }
         public int Priority { get; set; }
         public DateTime ExpectedDelivery { get; set; }
-        public DateTime Delivered { get; set; }
+        public DateTime? Delivered { get; set; }
 
         public Customer Customer { get; set; }
         public Product Product { get; set; }
