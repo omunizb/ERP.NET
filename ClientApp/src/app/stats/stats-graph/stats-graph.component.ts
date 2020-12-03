@@ -27,6 +27,9 @@ export class StatsGraphComponent implements OnInit {
           scaleLabel: {
             display: true,
             labelString: 'Sales (units)'
+          },
+          ticks: {
+            min: 0
           }
         },
         {

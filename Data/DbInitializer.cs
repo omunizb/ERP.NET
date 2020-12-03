@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-// Adapted from https://github.com/medhatelmasry/HealthAPI/blob/master/HealthAPI/Data/DummyData.cs
 namespace ERPProject.Data
 {
     public class DbInitializer
@@ -433,14 +432,14 @@ namespace ERPProject.Data
                     CustomerId = IDs[2, 4],
                     EmployeeId = IDs[1, 2],
                     ProductId = IDs[0, 7],
-                    Time = new DateTime(2020, 6, 5, 21, 50, 40),
+                    Time = new DateTime(2020, 10, 5, 21, 50, 40),
                     Quantity = 1,
                     Price = 24.76,
                     PriceVAT = 29.96,
                     State = "Delivered",
                     Priority = 3,
-                    ExpectedDelivery = new DateTime(2020, 6, 9),
-                    Delivered = new DateTime(2020, 6, 9, 13, 0, 7)
+                    ExpectedDelivery = new DateTime(2020, 10, 9),
+                    Delivered = new DateTime(2020, 10, 9, 13, 0, 7)
                 },
                 new Order {
                     CustomerId = IDs[2, 4],
