@@ -1,7 +1,7 @@
 # Ittaca ERP
 ## An Enterprise Resource Planning for a (fictional) e-commerce company: Ittaca.
 
-**NOTE: this project will be uploaded to Azure App Service in the coming few days. The URL will be displayed here.** 
+**Now you can visit Ittaca ERP at https://ittacaerp.azurewebsites.net/. As username, you can use either `Admin` or `Employee`, with the password `Pass123$`.** 
 
 ### Setup
 1. Download the code from this repository.
