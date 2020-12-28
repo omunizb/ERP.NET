@@ -41,7 +41,7 @@ export class ProductService {
   }
 
   deleteProduct(product: Product): Observable<Product> {
-    const url = `${this.baseUrl + this.stockUrl}/${product.id}.`;
+    const url = `${this.baseUrl + this.stockUrl}/${product.id}`;
     return this.http.delete<Product>(url, this.httpOptions).pipe(
       tap(_ => this.messageService.log(`Deleted product id=${product.id}.`)),
       catchError(this.handleError<Product>('deleteProduct'))
